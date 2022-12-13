@@ -57,7 +57,7 @@ public class sidePane extends javax.swing.JPanel {
             });
         }
 
-        JPanel [] pn = {topSidePane};
+        JPanel [] pn = {panelRound1,panelRound2,panelRound3,panelRound4};
         for (JPanel pnl : pn){
             pnl.setBackground(new Color(255,255,255));
             pnl.addMouseListener(new MouseListener() {
@@ -102,7 +102,13 @@ public class sidePane extends javax.swing.JPanel {
         dooWai = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         sp2 = new javax.swing.JPanel();
+        panelRound2 = new components.PanelRound();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         sp3 = new javax.swing.JPanel();
+        panelRound3 = new components.PanelRound();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         romanticButton = new javax.swing.JButton();
         actionButton = new javax.swing.JButton();
@@ -110,6 +116,9 @@ public class sidePane extends javax.swing.JPanel {
         fictionButton = new javax.swing.JButton();
         comedyButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        panelRound4 = new components.PanelRound();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         searchList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -154,13 +163,16 @@ public class sidePane extends javax.swing.JPanel {
         topSidePane.setPreferredSize(new java.awt.Dimension(243, 146));
         topSidePane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setRoundBottomLeft(20);
         panelRound1.setRoundBottomRight(20);
         panelRound1.setRoundTopLeft(20);
         panelRound1.setRoundTopRight(20);
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        dooWai.setBackground(new java.awt.Color(0, 0, 0));
         dooWai.setFont(new java.awt.Font("Ayuthaya", 1, 16)); // NOI18N
+        dooWai.setForeground(new java.awt.Color(0, 0, 0));
         dooWai.setText("DooWai");
         dooWai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelRound1.add(dooWai, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 48));
@@ -177,11 +189,49 @@ public class sidePane extends javax.swing.JPanel {
         sp2.setBackground(new java.awt.Color(255, 255, 255));
         sp2.setPreferredSize(new java.awt.Dimension(243, 60));
         sp2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelRound2.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panelRound2.setRoundBottomLeft(20);
+        panelRound2.setRoundBottomRight(20);
+        panelRound2.setRoundTopLeft(20);
+        panelRound2.setRoundTopRight(20);
+        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/favourite.png"))); // NOI18N
+        panelRound2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Favorite");
+        panelRound2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 10, 80, 20));
+
+        sp2.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 160, 40));
+
         sidePane.add(sp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 166, -1, 50));
 
         sp3.setBackground(new java.awt.Color(255, 255, 255));
         sp3.setPreferredSize(new java.awt.Dimension(243, 60));
         sp3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelRound3.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panelRound3.setRoundBottomLeft(20);
+        panelRound3.setRoundBottomRight(20);
+        panelRound3.setRoundTopLeft(20);
+        panelRound3.setRoundTopRight(20);
+        panelRound3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4013399 1.png"))); // NOI18N
+        panelRound3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Category");
+        panelRound3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
+
+        sp3.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 160, 40));
+
         sidePane.add(sp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 221, -1, 60));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -278,6 +328,25 @@ public class sidePane extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(243, 365));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelRound4.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panelRound4.setRoundBottomLeft(20);
+        panelRound4.setRoundBottomRight(20);
+        panelRound4.setRoundTopLeft(20);
+        panelRound4.setRoundTopRight(20);
+        panelRound4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1828427 1.png"))); // NOI18N
+        panelRound4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Logout");
+        panelRound4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
+
+        jPanel3.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 160, 40));
+
         sidePane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 463, -1, 370));
 
         add(sidePane, java.awt.BorderLayout.WEST);
@@ -317,12 +386,21 @@ public class sidePane extends javax.swing.JPanel {
     private javax.swing.JLabel dooWai;
     private javax.swing.JButton dramaButton;
     private javax.swing.JButton fictionButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private components.PanelRound panelRound1;
+    private components.PanelRound panelRound2;
+    private components.PanelRound panelRound3;
+    private components.PanelRound panelRound4;
     private javax.swing.JButton romanticButton;
     private javax.swing.JList<String> searchList;
     private javax.swing.JPanel sidePane;

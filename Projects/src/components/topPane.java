@@ -27,7 +27,7 @@ public class topPane extends javax.swing.JPanel {
         removePlaceholderStyle(searchBar);
         jSeparator1.setBackground(new Color(238,238,238));
         jSeparator2.setBackground(new Color(238,238,238));
-//        allComicButton.setBackground(new Color(242,242,242));
+//        roundedButton1.setBackground(new Color(242,242,242));
         JButton [] btns = {accountButton,searchButton,dropButtom};
         for (JButton btn : btns){
             btn.setUI(new BasicButtonUI());
@@ -93,14 +93,16 @@ public class topPane extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         searchBar = new javax.swing.JTextField();
+        roundedButton1 = new projects.RoundedButton();
+        allComic = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(951, 147));
+        setPreferredSize(new java.awt.Dimension(951, 148));
 
         rTopPane.setBackground(new java.awt.Color(255, 255, 255));
         rTopPane.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         rTopPane.setMaximumSize(new java.awt.Dimension(951, 147));
         rTopPane.setMinimumSize(new java.awt.Dimension(951, 147));
-        rTopPane.setPreferredSize(new java.awt.Dimension(951, 148));
+        rTopPane.setPreferredSize(new java.awt.Dimension(951, 147));
         rTopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1144760 2.png"))); // NOI18N
@@ -167,6 +169,44 @@ public class topPane extends javax.swing.JPanel {
         });
         rTopPane.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 115, 400, -1));
 
+        roundedButton1.setBackground(new java.awt.Color(242, 242, 242));
+        roundedButton1.setPreferredSize(new java.awt.Dimension(110, 31));
+        roundedButton1.setRoundBottomLeft(20);
+        roundedButton1.setRoundBottomRight(20);
+        roundedButton1.setRoundTopLeft(20);
+        roundedButton1.setRoundTopRight(20);
+        roundedButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                roundedButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                roundedButton1MouseExited(evt);
+            }
+        });
+
+        allComic.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        allComic.setForeground(new java.awt.Color(0, 0, 0));
+        allComic.setText("All COMIC");
+
+        javax.swing.GroupLayout roundedButton1Layout = new javax.swing.GroupLayout(roundedButton1);
+        roundedButton1.setLayout(roundedButton1Layout);
+        roundedButton1Layout.setHorizontalGroup(
+            roundedButton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedButton1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(allComic)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        roundedButton1Layout.setVerticalGroup(
+            roundedButton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedButton1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(allComic, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        rTopPane.add(roundedButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 130, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -221,7 +261,7 @@ public class topPane extends javax.swing.JPanel {
     }//GEN-LAST:event_searchBarMouseExited
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchBarActionPerformed
 
     private void searchBarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchBarKeyReleased
@@ -229,22 +269,32 @@ public class topPane extends javax.swing.JPanel {
     }//GEN-LAST:event_searchBarKeyReleased
 
     private void allComicButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allComicButtonMouseEntered
-//        allComicButton.setBackground(Color.BLACK);
-//        allComic.setForeground(Color.WHITE);
+
     }//GEN-LAST:event_allComicButtonMouseEntered
 
     private void allComicButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allComicButtonMouseExited
-//        allComicButton.setBackground(new Color(242,242,242));
-//        allComic.setForeground(Color.BLACK);
+
     }//GEN-LAST:event_allComicButtonMouseExited
+
+    private void roundedButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundedButton1MouseExited
+        roundedButton1.setBackground(new Color(242,242,242));
+        allComic.setForeground(Color.BLACK);
+    }//GEN-LAST:event_roundedButton1MouseExited
+
+    private void roundedButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundedButton1MouseEntered
+        roundedButton1.setBackground(Color.BLACK);
+        allComic.setForeground(Color.WHITE);
+    }//GEN-LAST:event_roundedButton1MouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accountButton;
+    private javax.swing.JLabel allComic;
     private javax.swing.JButton dropButtom;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel rTopPane;
+    private projects.RoundedButton roundedButton1;
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
