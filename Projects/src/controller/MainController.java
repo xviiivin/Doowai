@@ -8,23 +8,36 @@ package controller;
  *
  * @author wiwat
  */
+import componentAdmin.CategoryScrollPane;
 import frame.*;
 import layout.*;
 import java.awt.*;
 import components.*;
+import view.*;
 
 public class MainController {
     private Mainframe mainFrame;
     private MainLayout mainLayout;
     private sidePane navPanel;
-    private cartoonScrollPane contentPanel;
+//    private CategoryScrollPane contentPanel;
     private topPane topPanel;
+    private topPaneRead topRead;
+    private ReadCartoon ReadCar;
+    private ReadOne readOne;
+    private ReadMain readMain;
+//    private AdminLayout adminLayout;
+//    private AdminController adminCon;
     public MainController(){
         mainFrame = new Mainframe();
         mainLayout = new MainLayout();
         navPanel = new sidePane();
-        contentPanel = new cartoonScrollPane();
         topPanel = new topPane();
+        topRead = new topPaneRead();
+        ReadCar = new ReadCartoon();
+        readOne = new ReadOne();
+        readMain = new ReadMain();
+//        contentPanel = new CategoryScrollPane();
+        
         
         mainFrame.setLayout(new BorderLayout());
         mainFrame.add(mainLayout);
@@ -36,12 +49,12 @@ public class MainController {
         mainLayout.getTopPanel().add(topPanel);
         
         mainLayout.getBodyPanel().setLayout(new BorderLayout());
-        mainLayout.getBodyPanel().add(contentPanel);
+        mainLayout.getBodyPanel().add(readMain);
         mainFrame.setVisible(true);
         
-        mainLayout.getBodyPanel().removeAll();
-        mainLayout.getBodyPanel().add(contentPanel);
-        mainFrame.revalidate();
-        mainFrame.repaint();
+//        mainLayout.getBodyPanel().removeAll();
+//        mainLayout.getBodyPanel().add(contentPanel);
+//        mainFrame.revalidate();
+//        mainFrame.repaint();
     }
 }

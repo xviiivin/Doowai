@@ -41,12 +41,10 @@ public class MainLayout extends javax.swing.JPanel {
     private void initComponents() {
 
         navPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         bodyPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1194, 834));
-        setLayout(new java.awt.BorderLayout());
 
         navPanel.setBackground(new java.awt.Color(255, 102, 0));
         navPanel.setPreferredSize(new java.awt.Dimension(243, 834));
@@ -55,19 +53,15 @@ public class MainLayout extends javax.swing.JPanel {
         navPanel.setLayout(navPanelLayout);
         navPanelLayout.setHorizontalGroup(
             navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 243, Short.MAX_VALUE)
         );
         navPanelLayout.setVerticalGroup(
             navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        add(navPanel, java.awt.BorderLayout.WEST);
-
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
         topPanel.setBackground(new java.awt.Color(1, 1, 1));
-        topPanel.setPreferredSize(new java.awt.Dimension(951, 148));
+        topPanel.setPreferredSize(new java.awt.Dimension(951, 147));
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -80,10 +74,8 @@ public class MainLayout extends javax.swing.JPanel {
             .addGap(0, 148, Short.MAX_VALUE)
         );
 
-        jPanel1.add(topPanel, java.awt.BorderLayout.NORTH);
-
         bodyPanel.setBackground(new java.awt.Color(255, 153, 102));
-        bodyPanel.setPreferredSize(new java.awt.Dimension(945, 638));
+        bodyPanel.setPreferredSize(new java.awt.Dimension(945, 686));
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
         bodyPanel.setLayout(bodyPanelLayout);
@@ -96,15 +88,29 @@ public class MainLayout extends javax.swing.JPanel {
             .addGap(0, 686, Short.MAX_VALUE)
         );
 
-        jPanel1.add(bodyPanel, java.awt.BorderLayout.CENTER);
-
-        add(jPanel1, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(navPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(navPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel navPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
