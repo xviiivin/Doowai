@@ -56,7 +56,6 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="&#xe23;&#xe39;&#xe1b;&#xe01;&#xe32;&#xe23;&#xe4c;&#xe15;&#xe39;&#xe19;"/>
           </Properties>
         </Component>
       </SubComponents>

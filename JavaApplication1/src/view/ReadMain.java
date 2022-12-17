@@ -4,6 +4,8 @@
  */
 package view;
 
+import components.CartoonScrollPaneUser;
+
 /**
  *
  * @author sasimai
@@ -15,6 +17,14 @@ public class ReadMain extends javax.swing.JPanel {
      */
     public ReadMain() {
         initComponents();
+    }
+
+    public CartoonScrollPaneUser getCartoonScrollPaneUser1() {
+        return cartoonScrollPaneUser1;
+    }
+
+    public void setCartoonScrollPaneUser1(CartoonScrollPaneUser cartoonScrollPaneUser1) {
+        this.cartoonScrollPaneUser1 = cartoonScrollPaneUser1;
     }
 
     /**

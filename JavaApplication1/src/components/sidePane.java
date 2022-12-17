@@ -87,6 +87,14 @@ public class sidePane extends javax.swing.JPanel {
             });
         }
     }
+
+    public PanelRound getPanelRound4() {
+        return panelRound4;
+    }
+
+    public void setPanelRound4(PanelRound panelRound4) {
+        this.panelRound4 = panelRound4;
+    }
     
    
     @SuppressWarnings("unchecked")

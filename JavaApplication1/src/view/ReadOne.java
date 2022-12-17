@@ -21,7 +21,10 @@ public class ReadOne extends javax.swing.JPanel {
         adminBut21.getjLabel1().setText("ชื่อการ์ตูน");
         
         card21.getjLabel1().setText("รูปการ์ตูน");
-        card31.getjLabel1().setText("รายละเอียดการ์ตูน");
+        card31.getjTextArea1().setEditable(false);
+        card31.getjTextArea1().setText("รายละเอียดการ์ตูน");
+        
+        
     }
 
     /**

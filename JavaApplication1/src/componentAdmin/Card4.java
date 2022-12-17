@@ -17,11 +17,23 @@ public class Card4 extends javax.swing.JPanel {
     /**
      * Creates new form Card4
      */
+    
+    private int id;
     public Card4() {
         initComponents();
         adminBut32.getPanelRound1().setBackground(new Color(245,115,115));
         adminBut32.getjLabel1().setText("Delete");
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 
     public AdminBut3 getAdminBut31() {
         return adminBut31;

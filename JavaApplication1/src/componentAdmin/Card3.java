@@ -5,6 +5,7 @@
 package componentAdmin;
 
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -19,13 +20,15 @@ public class Card3 extends javax.swing.JPanel {
         initComponents();
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
+    public JTextArea getjTextArea1() {
+        return jTextArea1;
     }
 
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
+    public void setjTextArea1(JTextArea jTextArea1) {
+        this.jTextArea1 = jTextArea1;
     }
+
+
 
     public PanelRound getPanelRound1() {
         return panelRound1;
@@ -45,33 +48,44 @@ public class Card3 extends javax.swing.JPanel {
     private void initComponents() {
 
         panelRound1 = new componentAdmin.PanelRound();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(631, 275));
 
+        panelRound1.setForeground(new java.awt.Color(255, 255, 255));
         panelRound1.setPreferredSize(new java.awt.Dimension(631, 300));
         panelRound1.setRoundBottomLeft(25);
         panelRound1.setRoundBottomRight(25);
         panelRound1.setRoundTopLeft(25);
         panelRound1.setRoundTopRight(25);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("jLabel1");
-        jLabel1.setMaximumSize(new java.awt.Dimension(631, 300));
-        jLabel1.setMinimumSize(new java.awt.Dimension(631, 300));
-        jLabel1.setPreferredSize(new java.awt.Dimension(631, 631));
-        jLabel1.setRequestFocusEnabled(false);
+        jTextArea1.setBackground(new java.awt.Color(242, 242, 242));
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        jTextArea1.setCaretColor(new java.awt.Color(51, 153, 0));
+        jTextArea1.setDisabledTextColor(new java.awt.Color(153, 153, 0));
+        jTextArea1.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        jTextArea1.setSelectionColor(new java.awt.Color(242, 242, 242));
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -92,7 +106,8 @@ public class Card3 extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private componentAdmin.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
 }

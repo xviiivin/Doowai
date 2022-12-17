@@ -7,7 +7,12 @@ package componentAdmin;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.awt.Insets;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import model.CartoonModel;
+import model.ChapterImgModel;
+import util.Useful;
 
 /**
  *
@@ -15,38 +20,64 @@ import javax.swing.ImageIcon;
  */
 public class ChapScrollPane extends javax.swing.JPanel {
 
+    private Card4[] card;
+
     /**
      * Creates new form ChapScrollPane
      */
     public ChapScrollPane() {
         initComponents();
-        Card4 []cat = {new Card4(), new Card4(), new Card4(), 
-            new Card4(), new Card4(), new Card4(), new Card4(), new Card4(), new Card4(), 
-            new Card4(), new Card4(), new Card4(), new Card4(), 
-            new Card4(), new Card4(), new Card4(), new Card4(), new Card4(), 
-            new Card4(), new Card4(), new Card4(), new Card4(), new Card4(), new Card4(), 
-            new Card4(), new Card4(), new Card4(), new Card4(), 
-            new Card4(), new Card4()};
+    }
+
+    public void loopCardWithData(List<ChapterImgModel> chapimgdata) {
+
+        scrollPane1.removeAll();
+        scrollPane1.repaint();
+        CatPane.removeAll();
+        Card4[] cat = new Card4[chapimgdata.size()];
+        for (int i = 0; i < chapimgdata.size(); i++) {
+            cat[i] = new Card4();
+        }
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(15, 15, 15, 15);
         int x = 0;
         int y = 0;
-        ImageIcon imgThisImg = new ImageIcon("./src/images/Do.png");
-        imgThisImg.setImage(imgThisImg.getImage().getScaledInstance(200,275,Image.SCALE_DEFAULT));
-//        String cate[] = {"Romance", "Action", "Drama", "Fiction", "Comedy"};
-        for (int i = 0; i < cat.length; i++) {
+
+        for (int i = 0; i < chapimgdata.size(); i++) {
             gbc.gridx = x;
             gbc.gridy = y;
             CatPane.add(cat[i], gbc);
-            cat[i].getjLabel2().setText("#" + (i+1));
-//            cat[i].getjLabel1().setIcon(imgThisImg);
-//            cat[i].getjLabel1().setText("");
+            ImageIcon test = new Useful().FileImgtoImageIcon(chapimgdata.get(i).getFile_name(), 215, 180);
+            if (test != null) {
+                cat[i].getjLabel1().setIcon(test);
+            }
+            cat[i].getjLabel2().setText("#" + (i + 1));
+
+            cat[i].setId(chapimgdata.get(i).getId());
             x++;
             if (x == 4) {
                 x = 0;
                 y++;
             }
         }
+        scrollPane1.add(CatPane);
+        this.card = cat;
+    }
+
+    public JPanel getCatPane() {
+        return CatPane;
+    }
+
+    public void setCatPane(JPanel CatPane) {
+        this.CatPane = CatPane;
+    }
+
+    public Card4[] getCard() {
+        return card;
+    }
+
+    public void setCard(Card4[] card) {
+        this.card = card;
     }
 
     /**
@@ -60,6 +91,8 @@ public class ChapScrollPane extends javax.swing.JPanel {
 
         scrollPane1 = new java.awt.ScrollPane();
         CatPane = new javax.swing.JPanel();
+
+        setPreferredSize(new java.awt.Dimension(934, 565));
 
         scrollPane1.setPreferredSize(new java.awt.Dimension(951, 834));
         scrollPane1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {

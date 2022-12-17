@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import model.CartoonModel;
+import util.Useful;
 
 /**
  *
@@ -52,14 +53,20 @@ public class CatroonScrollPane extends javax.swing.JPanel {
         gbc.insets = new Insets(15, 15, 15, 15);
         int x = 0;
         int y = 0;
-        ImageIcon imgThisImg = new ImageIcon("./src/images/Do.png");
-        imgThisImg.setImage(imgThisImg.getImage().getScaledInstance(200, 275, Image.SCALE_DEFAULT));
+
         for (int i = 0; i < catdata.size(); i++) {
             gbc.gridx = x;
             gbc.gridy = y;
             CatPane.add(cat[i], gbc);
-            cat[i].getjLabel1().setIcon(imgThisImg);
+            
+            ImageIcon test = new Useful().FileImgtoImageIcon(catdata.get(i).getImg(), 215, 275);
+            if (test != null) {
+                cat[i].getjLabel1().setIcon(test);
+            }
+
             cat[i].setId(catdata.get(i).getId());
+
+
             x++;
             if (x == 4) {
                 x = 0;

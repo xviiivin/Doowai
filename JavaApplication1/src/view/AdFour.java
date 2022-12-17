@@ -4,6 +4,9 @@
  */
 package view;
 
+import componentAdmin.AdminBut1;
+import componentAdmin.AdminBut2;
+import componentAdmin.ChapScrollPane;
 import java.awt.Color;
 
 /**
@@ -15,13 +18,68 @@ public class AdFour extends javax.swing.JPanel {
     /**
      * Creates new form AdFour
      */
-    public AdFour() {
+    
+    private int idchap;
+    private int idcar;
+    private int idcat;
+    public AdFour(int idchap, int idcar, int idcat) {
+        this.idchap = idchap;
+        this.idcar = idcar;
+        this.idcat = idcat;
         initComponents();
         adminBut21.getPanelRound1().setBackground(new Color(241,241,241));
         adminBut21.getjLabel1().setText("ชื่อตอน");
                 
         adminBut12.getPanelRound1().setBackground(new Color(247,207,81));
-        adminBut12.getjLabel1().setText("Save");
+        adminBut12.getjLabel1().setText("Add Image");
+    }
+
+    public ChapScrollPane getChapScrollPane1() {
+        return chapScrollPane1;
+    }
+
+    public void setChapScrollPane1(ChapScrollPane chapScrollPane1) {
+        this.chapScrollPane1 = chapScrollPane1;
+    }
+
+    public int getIdchap() {
+        return idchap;
+    }
+
+    public void setIdchap(int idchap) {
+        this.idchap = idchap;
+    }
+
+    public AdminBut1 getAdminBut12() {
+        return adminBut12;
+    }
+
+    public void setAdminBut12(AdminBut1 adminBut12) {
+        this.adminBut12 = adminBut12;
+    }
+
+    public AdminBut2 getAdminBut21() {
+        return adminBut21;
+    }
+
+    public void setAdminBut21(AdminBut2 adminBut21) {
+        this.adminBut21 = adminBut21;
+    }
+
+    public int getIdcar() {
+        return idcar;
+    }
+
+    public void setIdcar(int idcar) {
+        this.idcar = idcar;
+    }
+
+    public int getIdcat() {
+        return idcat;
+    }
+
+    public void setIdcat(int idcat) {
+        this.idcat = idcat;
     }
 
     /**

@@ -4,6 +4,17 @@
  */
 package componentAdmin;
 
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import model.ChapterModel;
+import util.Useful;
+
 /**
  *
  * @author sasimai
@@ -15,6 +26,24 @@ public class TableScrollPane extends javax.swing.JPanel {
      */
     public TableScrollPane() {
         initComponents();
+        DefaultTableModel yourModel = (DefaultTableModel) this.table1.getModel();
+        yourModel.addRow(new Object[]{"f", "f", "f", 1, 2});
+        System.out.println(this.table1.getModel().getValueAt(0, 4));
+
+    }
+
+    public void loopTableWithData(List<ChapterModel> chapdata, String name) {
+
+        DefaultTableModel yourModel = (DefaultTableModel) this.table1.getModel();
+        yourModel.setRowCount(0);
+        for (int i = 0; i < chapdata.size(); i++) {
+            ChapterModel few = chapdata.get(i);
+            Date date = new Date(few.getDate());
+            System.out.println(few.getDate());
+            DateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
+            yourModel.addRow(new Object[]{chapdata.get(i).getName(), name, formatter1.format(date), few.getId(), few.getId()});
+        }
+
     }
 
     public Table getTable1() {
@@ -45,21 +74,14 @@ public class TableScrollPane extends javax.swing.JPanel {
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "", "", "", "", ""
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, true, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

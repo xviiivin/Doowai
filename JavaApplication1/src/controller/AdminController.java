@@ -16,9 +16,22 @@ import components.*;
 import model.UsersModel;
 import componentAdmin.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import static java.lang.Integer.parseInt;
+import java.util.Date;
 import model.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import util.Useful;
 
 public class AdminController implements ActionListener, MouseListener {
 
@@ -40,10 +53,14 @@ public class AdminController implements ActionListener, MouseListener {
 
     private CategoryModel category;
     private CartoonModel cartoon;
+    private ChapterModel chapter;
+    private ChapterImgModel chapter_img;
 
     public AdminController(UsersModel user) {
         category = new CategoryModel();
         cartoon = new CartoonModel();
+        chapter = new ChapterModel();
+        chapter_img = new ChapterImgModel();
 
         this.Account = user;
         adminFrame = new AdminFrame();
@@ -52,7 +69,7 @@ public class AdminController implements ActionListener, MouseListener {
         adOne = new AdOne();
         //adTwo = new AdTwo();
         //adThree = new AdThree();
-        adFour = new AdFour();
+        //adFour = new AdFour();
         adSide = new adsidePane();
         adTop = new adtopPane();
 
@@ -108,6 +125,47 @@ public class AdminController implements ActionListener, MouseListener {
             adminBody.removeAll();
             adminBody.add(adThree);
             adminBody.validate();
+
+            CartoonModel cardata = new CartoonModel().findWithId(adThree.getIdcar());
+
+            adThree.getjTextField1().setText(cardata.getName());
+
+            adThree.getCard31().getjTextArea1().setText(cardata.getDetail());
+
+            ImageIcon test = new Useful().FileImgtoImageIcon(cardata.getImg(), 230, 275);
+            if (test != null) {
+                adThree.getCard22().getjLabel1().setIcon(test);
+            }
+
+            adThree.getAdThreeBtn2().addMouseListener(this);
+            adThree.getCard22().addMouseListener(this);
+
+            adThree.getTableScrollPane1().getTable1().addMouseListener(this);
+
+            adThree.getAdminBut11().addMouseListener(this);
+
+            CartoonModel tesft = new CartoonModel().findWithId(adThree.getIdcar());
+            List<ChapterModel> chapdata = chapter.all(adThree.getIdcar());
+            adThree.getTableScrollPane1().loopTableWithData(chapdata, tesft.getName());
+
+        } else if (this.adminbodypanel.equals("adFour")) {
+            adminBody.removeAll();
+            adminBody.add(adFour);
+            adminBody.validate();
+
+            ChapterModel test = new ChapterModel().findWithId(adFour.getIdchap());
+
+            List<ChapterImgModel> cardata = chapter_img.all(adFour.getIdchap());
+            adFour.getChapScrollPane1().loopCardWithData(cardata);
+
+            Card4[] card = adFour.getChapScrollPane1().getCard();
+            for (int i = 0; i < card.length; i++) {
+                card[i].getAdminBut31().addMouseListener(this);
+                card[i].getAdminBut32().addMouseListener(this);
+            }
+
+            adFour.getAdminBut21().getjLabel1().setText(test.getName());
+            adFour.getAdminBut12().addMouseListener(this);
         }
     }
 
@@ -124,12 +182,10 @@ public class AdminController implements ActionListener, MouseListener {
         if (this.adminbodypanel.equals("adOne")) {
             if (e.getSource().equals(adOne.getAdminBut11())) {
                 //add category
-                String inputValue = JOptionPane.showInputDialog(null, "Please input a value", JOptionPane.QUESTION_MESSAGE);
+                String inputValue = JOptionPane.showInputDialog(null, "Please input a value", "Category", JOptionPane.QUESTION_MESSAGE);
                 if (inputValue != null) {
                     new CategoryModel().create(inputValue);
                     List<CategoryModel> catdata = category.all();
-                    adOne.getCategoryScrollPane1().loopCardWithData(catdata);
-
                     adOne.getCategoryScrollPane1().loopCardWithData(catdata);
                     Card[] card = adOne.getCategoryScrollPane1().getCard();
                     for (int i = 0; i < card.length; i++) {
@@ -178,6 +234,14 @@ public class AdminController implements ActionListener, MouseListener {
                 //cartoon.create("", "", "./src/images/Do.png",);
                 List<CartoonModel> cardata = cartoon.all(adTwo.getIdcat());
                 adTwo.getCatroonScrollPane1().loopCardWithData(cardata);
+
+                Card[] card = adTwo.getCatroonScrollPane1().getCard();
+                for (int i = 0; i < card.length; i++) {
+                    card[i].addMouseListener(this);
+                }
+                
+                JOptionPane.showMessageDialog(null, "Add Cartoon Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+
             } else if (e.getSource().equals(adTwo.getAdminBut12())) {
                 boolean check = false;
                 Card[] card = adTwo.getCatroonScrollPane1().getCard();
@@ -210,6 +274,157 @@ public class AdminController implements ActionListener, MouseListener {
                         break;
                     }
                     card[i].addMouseListener(this);
+                }
+            }
+        } else if (this.adminbodypanel.equals("adThree")) {
+            if (e.getSource().equals(adThree.getAdThreeBtn2())) {
+                try {
+                    CartoonModel cardata = new CartoonModel().findWithId(adThree.getIdcar());
+
+                    if (adThree.getImgcartoon() != null) {
+                        Date date = new Date();
+                        long test = date.getTime();
+                        String file_name = "image/cartoon/" + String.valueOf(test) + ".jpg";
+                        ImageIO.write(adThree.getImgcartoon(), "jpg", new File(file_name));
+                        new CartoonModel().update(adThree.getIdcar(), adThree.getjTextField1().getText(), adThree.getCard31().getjTextArea1().getText(), file_name, adThree.getIdcat());
+                    } else {
+                        new CartoonModel().update(adThree.getIdcar(), adThree.getjTextField1().getText(), adThree.getCard31().getjTextArea1().getText(), cardata.getImg(), adThree.getIdcat());
+                    }
+
+                    cardata = new CartoonModel().findWithId(adThree.getIdcar());
+                    List<ChapterModel> chapdata = chapter.all(adThree.getIdcar());
+                    adThree.getTableScrollPane1().loopTableWithData(chapdata, cardata.getName());
+
+                    JOptionPane.showMessageDialog(null, "Update Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Cannot SaveFile !!!", "Error", JOptionPane.PLAIN_MESSAGE);
+                }
+
+            } else if (e.getSource().equals(adThree.getCard22())) {
+                System.out.println("few");
+                JFileChooser fc = new JFileChooser();
+                FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+                fc.addChoosableFileFilter(imageFilter);
+                fc.setAcceptAllFileFilterUsed(false);
+                fc.showOpenDialog(adThree.getCard22()); // 
+
+                File f = fc.getSelectedFile();
+                if (f != null) {
+                    try {
+                        BufferedImage image = ImageIO.read(f);
+                        ImageIcon imageIcon = new ImageIcon(image);
+                        Image newimg = image.getScaledInstance(230, 275, java.awt.Image.SCALE_SMOOTH);
+                        imageIcon = new ImageIcon(newimg);
+                        adThree.getCard22().getjLabel1().setIcon(imageIcon);
+                        adThree.setImgcartoon(image);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+            } else if (e.getSource().equals(adThree.getTableScrollPane1().getTable1()) && adThree.getTableScrollPane1().getTable1().getSelectedColumn() == 3) {
+                Table t = adThree.getTableScrollPane1().getTable1();
+                String test = t.getValueAt(t.getSelectedRow(), t.getSelectedColumn()).toString();
+                adFour = new AdFour(parseInt(test), adThree.getIdcar(), adThree.getIdcat());
+                this.adminbodypanel = "adFour";
+                this.ChangeAdminBody();
+                //System.out.println("row: " + t.getSelectedRow() + " column: " + t.getSelectedColumn() + " value: " + t.getValueAt(t.getSelectedRow(), t.getSelectedColumn()));
+            } else if (e.getSource().equals(adThree.getTableScrollPane1().getTable1()) && adThree.getTableScrollPane1().getTable1().getSelectedColumn() == 4) {
+                Table t = adThree.getTableScrollPane1().getTable1();
+                String test = t.getValueAt(t.getSelectedRow(), t.getSelectedColumn()).toString();
+                new ChapterModel().delete(parseInt(test));
+                CartoonModel testf = new CartoonModel().findWithId(adThree.getIdcar());
+                List<ChapterModel> chapdata = chapter.all(adThree.getIdcar());
+                adThree.getTableScrollPane1().loopTableWithData(chapdata, testf.getName());
+                JOptionPane.showMessageDialog(null, "Delete Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+
+            } else if (e.getSource().equals(adThree.getAdminBut11())) {
+                String inputValue = JOptionPane.showInputDialog(null, "Please input a value", "Chapter", JOptionPane.QUESTION_MESSAGE);
+                if (inputValue != null) {
+                    System.out.println(inputValue + " " + adThree.getIdcar() + " " + adThree.getIdcat());
+                    new ChapterModel().create(inputValue, adThree.getIdcar(), adThree.getIdcat());
+                    CartoonModel test = new CartoonModel().findWithId(adThree.getIdcar());
+                    List<ChapterModel> chapdata = chapter.all(adThree.getIdcar());
+                    adThree.getTableScrollPane1().loopTableWithData(chapdata, test.getName());
+                    JOptionPane.showMessageDialog(null, "Create Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        } else if (this.adminbodypanel.equals("adFour")) {
+            if (e.getSource().equals(adFour.getAdminBut12())) {
+
+                JFileChooser fc = new JFileChooser();
+                FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+                fc.addChoosableFileFilter(imageFilter);
+                fc.setAcceptAllFileFilterUsed(false);
+                fc.showOpenDialog(adFour.getAdminBut12()); // 
+
+                File f = fc.getSelectedFile();
+                if (f != null) {
+                    try {
+                        BufferedImage image = ImageIO.read(f);
+                        Date date = new Date();
+                        long test = date.getTime();
+                        String file_name = "image/chapter/" + String.valueOf(test) + ".jpg";
+                        ImageIO.write(image, "jpg", new File(file_name));
+                        new ChapterImgModel().create(file_name, adFour.getIdchap(), adFour.getIdcat(), adFour.getIdcar());
+
+                        List<ChapterImgModel> cardata = chapter_img.all(adFour.getIdchap());
+                        adFour.getChapScrollPane1().loopCardWithData(cardata);
+                        Card4[] card = adFour.getChapScrollPane1().getCard();
+                        for (int i = 0; i < card.length; i++) {
+                            card[i].getAdminBut31().addMouseListener(this);
+                            card[i].getAdminBut32().addMouseListener(this);
+                        }
+
+                        JOptionPane.showMessageDialog(null, "Add Image Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, "File Not Found !!!", "Error", JOptionPane.PLAIN_MESSAGE);
+                        ex.printStackTrace();
+                    }
+                }
+            } else {
+                Card4[] card = adFour.getChapScrollPane1().getCard();
+                for (int i = 0; i < card.length; i++) {
+                    if (e.getSource().equals(card[i].getAdminBut31())) {
+
+                        JFileChooser fc = new JFileChooser();
+                        FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+                        fc.addChoosableFileFilter(imageFilter);
+                        fc.setAcceptAllFileFilterUsed(false);
+                        fc.showOpenDialog(adFour.getAdminBut12()); // 
+
+                        File f = fc.getSelectedFile();
+                        if (f != null) {
+                            try {
+                                BufferedImage image = ImageIO.read(f);
+                                ChapterImgModel chapimgfew = new ChapterImgModel().findWithId(card[i].getId());
+                                ImageIO.write(image, "jpg", new File(chapimgfew.getFile_name()));
+                                new ChapterImgModel().update(card[i].getId(), chapimgfew.getFile_name());
+                                JOptionPane.showMessageDialog(null, "Update Image Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+                                break;
+                            } catch (IOException ex) {
+                                JOptionPane.showMessageDialog(null, "File Not Found !!!", "Error", JOptionPane.PLAIN_MESSAGE);
+                                break;
+                            }
+                        }
+
+                        break;
+                    } else if (e.getSource().equals(card[i].getAdminBut32())) {
+                        //delete
+                        new ChapterImgModel().delete(card[i].getId());
+                        JOptionPane.showMessageDialog(null, "Delete Image Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+                        break;
+                    }
+                }
+
+                List<ChapterImgModel> cardata = chapter_img.all(adFour.getIdchap());
+                adFour.getChapScrollPane1().loopCardWithData(cardata);
+                card = adFour.getChapScrollPane1().getCard();
+                System.out.println(card.length);
+                for (int i = 0; i < card.length; i++) {
+                    card[i].getAdminBut31().addMouseListener(this);
+                    card[i].getAdminBut32().addMouseListener(this);
                 }
             }
         }

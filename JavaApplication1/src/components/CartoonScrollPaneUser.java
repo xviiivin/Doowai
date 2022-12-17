@@ -8,7 +8,10 @@ import componentAdmin.Card;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.awt.Insets;
+import java.util.List;
 import javax.swing.ImageIcon;
+import model.CartoonModel;
+import util.Useful;
 
 /**
  *
@@ -16,6 +19,8 @@ import javax.swing.ImageIcon;
  */
 public class CartoonScrollPaneUser extends javax.swing.JPanel {
 
+    private CardMain[] card;
+  
     /**
      * Creates new form CartoonScrollPaneUser
      */
@@ -36,13 +41,44 @@ public class CartoonScrollPaneUser extends javax.swing.JPanel {
             gbc.gridy = y;
             jPanel1.add(cat[i], gbc);
 //            cat[i].getjLabel1().setIcon(imgThisImg);
-            cat[i].getjLabel1().setText("test");
             x++;
             if (x == 4) {
                 x = 0;
                 y++;
             }
         }
+    }
+    
+    public void loopCardWithData(List<CartoonModel> catdata) {
+        scrollPane1.removeAll();
+        scrollPane1.repaint();
+        jPanel1.removeAll();
+        CardMain[] cat = new CardMain[catdata.size()];
+        for (int i = 0; i < catdata.size(); i++) {
+            cat[i] = new CardMain();
+        }
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(15, 15, 15, 15);
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < catdata.size(); i++) {
+            gbc.gridx = x;
+            gbc.gridy = y;
+            jPanel1.add(cat[i], gbc);
+            ImageIcon test = new Useful().FileImgtoImageIcon(catdata.get(i).getImg(), 215, 275);
+            if (test != null) {
+                cat[i].getjLabel1().setIcon(test);
+            }
+            cat[i].setId(catdata.get(i).getId());
+            x++;
+            if (x == 4) {
+                x = 0;
+                y++;
+            }
+        }
+        scrollPane1.add(jPanel1);
+        this.card = cat;
     }
 
     /**

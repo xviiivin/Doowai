@@ -86,7 +86,9 @@ public class CartoonModel {
                 users = new CartoonModel();
                 users.setId(rs.getInt("id"));
                 users.setName(rs.getString("name"));
-
+                users.setDetail(rs.getString("detail"));
+                users.setImg(rs.getString("img"));
+                users.setIdcategory(rs.getInt("idcategory"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -106,7 +108,30 @@ public class CartoonModel {
                 CartoonModel user = new CartoonModel();
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
-                user.setDetail(rs.getString("img"));
+                user.setDetail(rs.getString("detail"));
+                user.setImg(rs.getString("img"));
+                user.setIdcategory(rs.getInt("idcategory"));
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return users;
+    }
+    
+      public static List<CartoonModel> all1() {
+        conn = Sqlite.getConnection();
+        List<CartoonModel> users = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM cartoon");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CartoonModel user = new CartoonModel();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setDetail(rs.getString("detail"));
+                user.setImg(rs.getString("img"));
                 user.setIdcategory(rs.getInt("idcategory"));
                 users.add(user);
             }
@@ -124,6 +149,23 @@ public class CartoonModel {
             ps.setString(2, detail);
             ps.setString(3, img);
             ps.setInt(4, idcategory);
+            ps.execute();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public Boolean update(int id, String name, String detail, String img, int idcategory) {
+        conn = Sqlite.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement("UPDATE cartoon SET name = ?, detail = ?, img = ?, idcategory = ? WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, name);
+            ps.setString(2, detail);
+            ps.setString(3, img);
+            ps.setInt(4, idcategory);
+            ps.setInt(5, id);
             ps.execute();
             return true;
         } catch (SQLException ex) {

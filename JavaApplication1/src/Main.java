@@ -12,6 +12,6 @@ public class Main {
     public static void main(String[] args){
         //new MainController();
         new AuthController();
-        //new AdminController();
+//        new AdminController();
     }
 }

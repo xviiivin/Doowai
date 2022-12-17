@@ -11,7 +11,16 @@ import javax.swing.JLabel;
  * @author sasimai
  */
 public class CardMain extends javax.swing.JPanel {
+    private int id;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     /**
      * Creates new form CardMain
      */
@@ -45,7 +54,6 @@ public class CardMain extends javax.swing.JPanel {
         panelRound1.setRoundTopRight(25);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("รูปการ์ตูน");
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);

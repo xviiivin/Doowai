@@ -13,7 +13,9 @@ import componentAdmin.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -30,6 +32,8 @@ public class AdThree extends javax.swing.JPanel {
     private int idcat;
     private int idcar;
     
+    private BufferedImage imgcartoon;
+    
     public AdThree(int idcat, int idcar) {
         this.idcat = idcat;
         this.idcar = idcar;
@@ -39,23 +43,55 @@ public class AdThree extends javax.swing.JPanel {
         adThreeBtn2 = new adThreeBtn2();
         
         adminBut21.getPanelRound1().setBackground(new Color(241,241,241));
-        adminBut21.getjLabel1().setText("ชื่อการ์ตูน");
+        adminBut21.getjLabel1().setText("");
                 
         
         adminBut11.getPanelRound1().setBackground(new Color(247,207,81));
         adminBut11.getjLabel1().setText("Add chapter");
         
         jPanel4.setLayout(new BorderLayout());
-//        jPanel4.add(adThreeBtn1);
+        //jPanel4.add(adThreeBtn1);
         jPanel4.add(adThreeBtn2);
+    }
+
+    public BufferedImage getImgcartoon() {
+        return imgcartoon;
+    }
+
+    public void setImgcartoon(BufferedImage imgcartoon) {
+        this.imgcartoon = imgcartoon;
     }
 
     public AdminBut1 getAdminBut11() {
         return adminBut11;
     }
 
+    public adThreeBtn2 getAdThreeBtn2() {
+        return adThreeBtn2;
+    }
+
+    public void setAdThreeBtn2(adThreeBtn2 adThreeBtn2) {
+        this.adThreeBtn2 = adThreeBtn2;
+    }
+
     public void setAdminBut11(AdminBut1 adminBut11) {
         this.adminBut11 = adminBut11;
+    }
+
+    public int getIdcat() {
+        return idcat;
+    }
+
+    public void setIdcat(int idcat) {
+        this.idcat = idcat;
+    }
+
+    public int getIdcar() {
+        return idcar;
+    }
+
+    public void setIdcar(int idcar) {
+        this.idcar = idcar;
     }
 
     public AdminBut2 getAdminBut21() {
@@ -118,6 +154,14 @@ public class AdThree extends javax.swing.JPanel {
         return tableScrollPane1;
     }
 
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
     public void setTableScrollPane1(TableScrollPane tableScrollPane1) {
         this.tableScrollPane1 = tableScrollPane1;
     }
@@ -132,8 +176,10 @@ public class AdThree extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        adminBut21 = new componentAdmin.AdminBut2();
         jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        adminBut21 = new componentAdmin.AdminBut2();
+        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         card22 = new componentAdmin.Card2();
         card31 = new componentAdmin.Card3();
@@ -142,13 +188,9 @@ public class AdThree extends javax.swing.JPanel {
         adminBut11 = new componentAdmin.AdminBut1();
 
         setPreferredSize(new java.awt.Dimension(951, 686));
-        setSize(new java.awt.Dimension(951, 686));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(951, 84));
-        jPanel1.setSize(new java.awt.Dimension(951, 84));
-
-        adminBut21.setMinimumSize(new java.awt.Dimension(250, 40));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -156,11 +198,47 @@ public class AdThree extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 633, Short.MAX_VALUE)
+            .addGap(0, 395, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 84, Short.MAX_VALUE)
+        );
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        adminBut21.setMinimumSize(new java.awt.Dimension(250, 40));
+
+        jTextField1.setBackground(new java.awt.Color(241, 241, 241));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("jTextField1");
+        jTextField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(adminBut21, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(adminBut21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(14, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -168,20 +246,18 @@ public class AdThree extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(adminBut21, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(256, 256, 256)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(adminBut21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -230,7 +306,7 @@ public class AdThree extends javax.swing.JPanel {
                 .addComponent(tableScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(adminBut11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -265,6 +341,8 @@ public class AdThree extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JTextField jTextField1;
     private componentAdmin.TableScrollPane tableScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
