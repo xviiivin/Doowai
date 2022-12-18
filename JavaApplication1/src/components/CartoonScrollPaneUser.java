@@ -26,27 +26,14 @@ public class CartoonScrollPaneUser extends javax.swing.JPanel {
      */
     public CartoonScrollPaneUser() {
         initComponents();
-        CardMain []cat = {new CardMain(), new CardMain(), new CardMain(), 
-            new CardMain(), new CardMain(), new CardMain(), new CardMain(), new CardMain(), new CardMain(), 
-            new CardMain(), new CardMain(), new CardMain(), new CardMain(), new CardMain()};
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(15, 15, 15, 15);
-        int x = 0;
-        int y = 0;
-        ImageIcon imgThisImg = new ImageIcon("./src/images/Do.png");
-        imgThisImg.setImage(imgThisImg.getImage().getScaledInstance(200,275,Image.SCALE_DEFAULT));
-//        String cate[] = {"Romance", "Action", "Drama", "Fiction", "Comedy"};
-        for (int i = 0; i < cat.length; i++) {
-            gbc.gridx = x;
-            gbc.gridy = y;
-            jPanel1.add(cat[i], gbc);
-//            cat[i].getjLabel1().setIcon(imgThisImg);
-            x++;
-            if (x == 4) {
-                x = 0;
-                y++;
-            }
-        }
+    }
+
+    public CardMain[] getCard() {
+        return card;
+    }
+
+    public void setCard(CardMain[] card) {
+        this.card = card;
     }
     
     public void loopCardWithData(List<CartoonModel> catdata) {
@@ -66,7 +53,7 @@ public class CartoonScrollPaneUser extends javax.swing.JPanel {
             gbc.gridx = x;
             gbc.gridy = y;
             jPanel1.add(cat[i], gbc);
-            ImageIcon test = new Useful().FileImgtoImageIcon(catdata.get(i).getImg(), 215, 275);
+            ImageIcon test = new Useful().FileImgtoImageIcon(catdata.get(i).getImg(), 200, 275);
             if (test != null) {
                 cat[i].getjLabel1().setIcon(test);
             }

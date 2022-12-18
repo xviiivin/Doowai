@@ -26,22 +26,20 @@ public class TableScrollPane extends javax.swing.JPanel {
      */
     public TableScrollPane() {
         initComponents();
-        DefaultTableModel yourModel = (DefaultTableModel) this.table1.getModel();
-        yourModel.addRow(new Object[]{"f", "f", "f", 1, 2});
-        System.out.println(this.table1.getModel().getValueAt(0, 4));
-
     }
 
     public void loopTableWithData(List<ChapterModel> chapdata, String name) {
+        try {
+            DefaultTableModel yourModel = (DefaultTableModel) this.table1.getModel();
+            yourModel.setRowCount(0);
+            for (int i = 0; i < chapdata.size(); i++) {
+                ChapterModel few = chapdata.get(i);
+                Date date = new Date(few.getDate());
+                DateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
+                yourModel.addRow(new Object[]{chapdata.get(i).getName(), name, formatter1.format(date), few.getId(), few.getId()});
+            }
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
-        DefaultTableModel yourModel = (DefaultTableModel) this.table1.getModel();
-        yourModel.setRowCount(0);
-        for (int i = 0; i < chapdata.size(); i++) {
-            ChapterModel few = chapdata.get(i);
-            Date date = new Date(few.getDate());
-            System.out.println(few.getDate());
-            DateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd");
-            yourModel.addRow(new Object[]{chapdata.get(i).getName(), name, formatter1.format(date), few.getId(), few.getId()});
         }
 
     }

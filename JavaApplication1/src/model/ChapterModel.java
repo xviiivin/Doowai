@@ -54,8 +54,6 @@ public class ChapterModel {
         this.date = date;
     }
 
-
-
     public void setName(String name) {
         this.name = name;
     }
@@ -105,6 +103,30 @@ public class ChapterModel {
             Statement st = conn.createStatement();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM chapter WHERE idcartoon = ?");
             ps.setInt(1, idcartoon);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChapterModel user = new ChapterModel();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setIdcartoon(rs.getInt("idcartoon"));
+                user.setIdcategory(rs.getInt("idcategory"));
+                user.setDate(rs.getLong("date"));
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return users;
+    }
+
+    public static List<ChapterModel> search(int idcartoon, String keyword) {
+        conn = Sqlite.getConnection();
+        List<ChapterModel> users = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM chapter WHERE idcartoon = ? AND name LIKE ?");
+            ps.setInt(1, idcartoon);
+            ps.setString(2, "%" + keyword + "%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 ChapterModel user = new ChapterModel();

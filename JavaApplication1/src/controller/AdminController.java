@@ -20,6 +20,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import java.util.Date;
 import model.*;
 import java.util.List;
@@ -56,8 +57,12 @@ public class AdminController implements ActionListener, MouseListener {
     private ChapterModel chapter;
     private ChapterImgModel chapter_img;
 
+    private ArrayList<Object> previous = new ArrayList<Object>();
+
     public AdminController(UsersModel user) {
+
         category = new CategoryModel();
+
         cartoon = new CartoonModel();
         chapter = new ChapterModel();
         chapter_img = new ChapterImgModel();
@@ -91,15 +96,29 @@ public class AdminController implements ActionListener, MouseListener {
         adminFrame.setLayout(new BorderLayout());
         adminFrame.add(adminLayout);
         adminFrame.setVisible(true);
+
+        ArrayList<Object> arraylist1 = new ArrayList<Object>();
+        arraylist1.add("adOne");
+        arraylist1.add(adOne);
+        previous.add(arraylist1);
         this.ChangeAdminBody();
         adSide.getjButton10().addActionListener(this);
+
+        adTop.getAdTopBut1().addMouseListener(this);
     }
 
     public void ChangeAdminBody() {
         if (this.adminbodypanel.equals("adOne")) {
+
+            adminBody.removeAll();
             adminBody.add(adOne);
+            adminBody.validate();
+            adminBody.repaint();
             List<CategoryModel> catdata = category.all();
             adOne.getCategoryScrollPane1().loopCardWithData(catdata);
+
+            adOne.getAdminBut11().removeMouseListener(this);
+            adOne.getAdminBut12().removeMouseListener(this);
             adOne.getAdminBut11().addMouseListener(this);
             adOne.getAdminBut12().addMouseListener(this);
 
@@ -111,9 +130,14 @@ public class AdminController implements ActionListener, MouseListener {
             adminBody.removeAll();
             adminBody.add(adTwo);
             adminBody.validate();
+            adminBody.repaint();
 
             List<CartoonModel> cardata = cartoon.all(adTwo.getIdcat());
             adTwo.getCatroonScrollPane1().loopCardWithData(cardata);
+
+            adTwo.getAdminBut11().removeMouseListener(this);
+            adTwo.getAdminBut12().removeMouseListener(this);
+
             adTwo.getAdminBut11().addMouseListener(this);
             adTwo.getAdminBut12().addMouseListener(this);
 
@@ -125,6 +149,7 @@ public class AdminController implements ActionListener, MouseListener {
             adminBody.removeAll();
             adminBody.add(adThree);
             adminBody.validate();
+            adminBody.repaint();
 
             CartoonModel cardata = new CartoonModel().findWithId(adThree.getIdcar());
 
@@ -136,6 +161,11 @@ public class AdminController implements ActionListener, MouseListener {
             if (test != null) {
                 adThree.getCard22().getjLabel1().setIcon(test);
             }
+
+            adThree.getAdThreeBtn2().removeMouseListener(this);
+            adThree.getCard22().removeMouseListener(this);
+            adThree.getAdminBut11().removeMouseListener(this);
+            adThree.getTableScrollPane1().removeMouseListener(this);
 
             adThree.getAdThreeBtn2().addMouseListener(this);
             adThree.getCard22().addMouseListener(this);
@@ -149,10 +179,6 @@ public class AdminController implements ActionListener, MouseListener {
             adThree.getTableScrollPane1().loopTableWithData(chapdata, tesft.getName());
 
         } else if (this.adminbodypanel.equals("adFour")) {
-            adminBody.removeAll();
-            adminBody.add(adFour);
-            adminBody.validate();
-
             ChapterModel test = new ChapterModel().findWithId(adFour.getIdchap());
 
             List<ChapterImgModel> cardata = chapter_img.all(adFour.getIdchap());
@@ -164,8 +190,15 @@ public class AdminController implements ActionListener, MouseListener {
                 card[i].getAdminBut32().addMouseListener(this);
             }
 
+            adFour.getAdminBut12().removeMouseListener(this);
+
             adFour.getAdminBut21().getjLabel1().setText(test.getName());
             adFour.getAdminBut12().addMouseListener(this);
+            adminBody.removeAll();
+            adminBody.add(adFour);
+            adminBody.validate();
+            adminBody.repaint();
+
         }
     }
 
@@ -179,7 +212,31 @@ public class AdminController implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (this.adminbodypanel.equals("adOne")) {
+        if (e.getSource().equals(adTop.getAdTopBut1())) {
+
+            if (previous.size() - 2 < 0) {
+                JOptionPane.showMessageDialog(null, "Not have page to previous !!!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+
+                ArrayList test = (ArrayList) previous.get(previous.size() - 2);
+                if (test.get(1).equals(adOne)) {
+                    adOne = (AdOne) test.get(1);
+                    this.adminbodypanel = test.get(0).toString();
+                } else if (test.get(1).equals(adTwo)) {
+                    adTwo = (AdTwo) test.get(1);
+                    this.adminbodypanel = test.get(0).toString();
+                } else if (test.get(1).equals(adThree)) {
+                    adThree = (AdThree) test.get(1);
+                    this.adminbodypanel = test.get(0).toString();
+                } else if (test.get(1).equals(adFour)) {
+                    adFour = (AdFour) test.get(1);
+                    this.adminbodypanel = test.get(0).toString();
+                }
+                this.ChangeAdminBody();
+                previous.remove(previous.size() - 1);
+            }
+
+        } else if (this.adminbodypanel.equals("adOne")) {
             if (e.getSource().equals(adOne.getAdminBut11())) {
                 //add category
                 String inputValue = JOptionPane.showInputDialog(null, "Please input a value", "Category", JOptionPane.QUESTION_MESSAGE);
@@ -221,6 +278,11 @@ public class AdminController implements ActionListener, MouseListener {
                     if (e.getSource().equals(card[i])) {
                         adTwo = new AdTwo(card[i].getId());
                         this.adminbodypanel = "adTwo";
+
+                        ArrayList<Object> arraylist1 = new ArrayList<Object>();
+                        arraylist1.add("adTwo");
+                        arraylist1.add(adTwo);
+                        previous.add(arraylist1);
                         this.ChangeAdminBody();
                         break;
                     }
@@ -239,7 +301,7 @@ public class AdminController implements ActionListener, MouseListener {
                 for (int i = 0; i < card.length; i++) {
                     card[i].addMouseListener(this);
                 }
-                
+
                 JOptionPane.showMessageDialog(null, "Add Cartoon Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
 
             } else if (e.getSource().equals(adTwo.getAdminBut12())) {
@@ -264,12 +326,16 @@ public class AdminController implements ActionListener, MouseListener {
                 } else {
                     JOptionPane.showMessageDialog(null, "Please select a card to delete !!!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
+            } else if (e.getSource().getClass().getSimpleName().equals("Card")) {
                 Card[] card = adTwo.getCatroonScrollPane1().getCard();
                 for (int i = 0; i < card.length; i++) {
                     if (e.getSource().equals(card[i])) {
                         adThree = new AdThree(adTwo.getIdcat(), card[i].getId());
                         this.adminbodypanel = "adThree";
+                        ArrayList<Object> arraylist1 = new ArrayList<Object>();
+                        arraylist1.add("adThree");
+                        arraylist1.add(adThree);
+                        previous.add(arraylist1);
                         this.ChangeAdminBody();
                         break;
                     }
@@ -327,16 +393,26 @@ public class AdminController implements ActionListener, MouseListener {
                 String test = t.getValueAt(t.getSelectedRow(), t.getSelectedColumn()).toString();
                 adFour = new AdFour(parseInt(test), adThree.getIdcar(), adThree.getIdcat());
                 this.adminbodypanel = "adFour";
+
+                ArrayList<Object> arraylist1 = new ArrayList<Object>();
+                arraylist1.add("adFour");
+                arraylist1.add(adFour);
+                previous.add(arraylist1);
                 this.ChangeAdminBody();
                 //System.out.println("row: " + t.getSelectedRow() + " column: " + t.getSelectedColumn() + " value: " + t.getValueAt(t.getSelectedRow(), t.getSelectedColumn()));
             } else if (e.getSource().equals(adThree.getTableScrollPane1().getTable1()) && adThree.getTableScrollPane1().getTable1().getSelectedColumn() == 4) {
-                Table t = adThree.getTableScrollPane1().getTable1();
-                String test = t.getValueAt(t.getSelectedRow(), t.getSelectedColumn()).toString();
-                new ChapterModel().delete(parseInt(test));
-                CartoonModel testf = new CartoonModel().findWithId(adThree.getIdcar());
-                List<ChapterModel> chapdata = chapter.all(adThree.getIdcar());
-                adThree.getTableScrollPane1().loopTableWithData(chapdata, testf.getName());
-                JOptionPane.showMessageDialog(null, "Delete Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+                try {
+                    Table t = adThree.getTableScrollPane1().getTable1();
+                    String test = t.getValueAt(t.getSelectedRow(), t.getSelectedColumn()).toString();
+                    new ChapterModel().delete(parseInt(test));
+                    CartoonModel testf = new CartoonModel().findWithId(adThree.getIdcar());
+                    List<ChapterModel> chapdata = chapter.all(adThree.getIdcar());
+                    adThree.getTableScrollPane1().loopTableWithData(chapdata, testf.getName());
+                    JOptionPane.showMessageDialog(null, "Delete Success !!!", "Success", JOptionPane.PLAIN_MESSAGE);
+
+                } catch (ArrayIndexOutOfBoundsException ex) {
+
+                }
 
             } else if (e.getSource().equals(adThree.getAdminBut11())) {
                 String inputValue = JOptionPane.showInputDialog(null, "Please input a value", "Chapter", JOptionPane.QUESTION_MESSAGE);
@@ -350,7 +426,9 @@ public class AdminController implements ActionListener, MouseListener {
                 }
             }
         } else if (this.adminbodypanel.equals("adFour")) {
-            if (e.getSource().equals(adFour.getAdminBut12())) {
+            if (e.getSource().getClass().getSimpleName().equals("Table")) {
+                return;
+            } else if (e.getSource().equals(adFour.getAdminBut12())) {
 
                 JFileChooser fc = new JFileChooser();
                 FileFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
@@ -417,11 +495,10 @@ public class AdminController implements ActionListener, MouseListener {
                         break;
                     }
                 }
-
                 List<ChapterImgModel> cardata = chapter_img.all(adFour.getIdchap());
                 adFour.getChapScrollPane1().loopCardWithData(cardata);
                 card = adFour.getChapScrollPane1().getCard();
-                System.out.println(card.length);
+                System.out.println(card.length + "few");
                 for (int i = 0; i < card.length; i++) {
                     card[i].getAdminBut31().addMouseListener(this);
                     card[i].getAdminBut32().addMouseListener(this);

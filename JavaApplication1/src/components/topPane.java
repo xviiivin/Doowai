@@ -18,6 +18,14 @@ import javax.swing.plaf.basic.BasicButtonUI;
  */
 public class topPane extends javax.swing.JPanel {
 
+    public JTextField getSearchBar() {
+        return searchBar;
+    }
+
+    public void setSearchBar(JTextField searchBar) {
+        this.searchBar = searchBar;
+    }
+
     /**
      * Creates new form topPane
      */

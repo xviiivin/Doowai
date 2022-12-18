@@ -4,6 +4,10 @@
  */
 package view;
 
+import componentAdmin.AdminBut2;
+import componentAdmin.Card2;
+import componentAdmin.Card3;
+import components.TableScrollPaneUser;
 import java.awt.Color;
 
 /**
@@ -11,11 +15,14 @@ import java.awt.Color;
  * @author sasimai
  */
 public class ReadOne extends javax.swing.JPanel {
-
+    private int id;
+    
+    
     /**
      * Creates new form ReadOne
      */
-    public ReadOne() {
+    public ReadOne(int id) {
+        this.id = id;
         initComponents();
         adminBut21.getPanelRound1().setBackground(new Color(241,241,241));
         adminBut21.getjLabel1().setText("ชื่อการ์ตูน");
@@ -25,6 +32,46 @@ public class ReadOne extends javax.swing.JPanel {
         card31.getjTextArea1().setText("รายละเอียดการ์ตูน");
         
         
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public AdminBut2 getAdminBut21() {
+        return adminBut21;
+    }
+
+    public void setAdminBut21(AdminBut2 adminBut21) {
+        this.adminBut21 = adminBut21;
+    }
+
+    public Card2 getCard21() {
+        return card21;
+    }
+
+    public void setCard21(Card2 card21) {
+        this.card21 = card21;
+    }
+
+    public Card3 getCard31() {
+        return card31;
+    }
+
+    public void setCard31(Card3 card31) {
+        this.card31 = card31;
+    }
+
+    public TableScrollPaneUser getTableScrollpane1() {
+        return tableScrollpane1;
+    }
+
+    public void setTableScrollpane1(TableScrollPaneUser tableScrollpane1) {
+        this.tableScrollpane1 = tableScrollpane1;
     }
 
     /**

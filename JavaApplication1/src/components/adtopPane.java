@@ -4,6 +4,7 @@
  */
 package components;
 
+import componentAdmin.AdTopBut;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
@@ -17,6 +18,14 @@ import javax.swing.plaf.basic.BasicButtonUI;
  * @author niniewww
  */
 public class adtopPane extends javax.swing.JPanel {
+
+    public AdTopBut getAdTopBut1() {
+        return adTopBut1;
+    }
+
+    public void setAdTopBut1(AdTopBut adTopBut1) {
+        this.adTopBut1 = adTopBut1;
+    }
 
     /**
      * Creates new form topPane
@@ -94,7 +103,7 @@ public class adtopPane extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(951, 147));
 
         rTopPane.setBackground(new java.awt.Color(255, 255, 255));
-        rTopPane.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        rTopPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         rTopPane.setMaximumSize(new java.awt.Dimension(951, 147));
         rTopPane.setMinimumSize(new java.awt.Dimension(951, 147));
         rTopPane.setPreferredSize(new java.awt.Dimension(951, 147));

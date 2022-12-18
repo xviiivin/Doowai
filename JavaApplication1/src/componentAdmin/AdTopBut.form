@@ -69,7 +69,7 @@
               <Font name="Helvetica Neue" size="12" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="ALL COMIC"/>
+            <Property name="text" type="java.lang.String" value="PREVIOUS"/>
           </Properties>
         </Component>
       </SubComponents>

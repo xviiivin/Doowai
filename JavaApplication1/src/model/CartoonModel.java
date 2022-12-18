@@ -118,13 +118,14 @@ public class CartoonModel {
         }
         return users;
     }
-    
-      public static List<CartoonModel> all1() {
+
+    public static List<CartoonModel> search(String keyword) {
         conn = Sqlite.getConnection();
         List<CartoonModel> users = new ArrayList<>();
         try {
             Statement st = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM cartoon");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM cartoon WHERE name LIKE ?");
+            ps.setString(1, "%" + keyword + "%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 CartoonModel user = new CartoonModel();

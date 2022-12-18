@@ -97,14 +97,15 @@ public class AdTwo extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(102, 255, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(951, 602));
 
-        catroonScrollPane1.setMinimumSize(new java.awt.Dimension(0, 0));
         catroonScrollPane1.setPreferredSize(new java.awt.Dimension(1194, 565));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(catroonScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(catroonScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 932, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
