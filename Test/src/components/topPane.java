@@ -36,7 +36,7 @@ public class topPane extends javax.swing.JPanel {
         jSeparator1.setBackground(new Color(238,238,238));
         jSeparator2.setBackground(new Color(238,238,238));
 //        roundedButton1.setBackground(new Color(242,242,242));
-        JButton [] btns = {accountButton,searchButton,dropButtom};
+        JButton [] btns = {accountButton,searchButton};
         for (JButton btn : btns){
             btn.setUI(new BasicButtonUI());
             btn.setBackground(new Color(255,255,255));
@@ -94,13 +94,25 @@ public class topPane extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         rTopPane = new javax.swing.JPanel();
         accountButton = new javax.swing.JButton();
-        dropButtom = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         searchBar = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMaximumSize(new java.awt.Dimension(120, 40));
+        jButton1.setMinimumSize(new java.awt.Dimension(120, 40));
+        jButton1.setPreferredSize(new java.awt.Dimension(120, 40));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         setPreferredSize(new java.awt.Dimension(951, 148));
 
@@ -119,15 +131,6 @@ public class topPane extends javax.swing.JPanel {
             }
         });
         rTopPane.add(accountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 50, 40));
-
-        dropButtom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 3.png"))); // NOI18N
-        dropButtom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        dropButtom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dropButtomActionPerformed(evt);
-            }
-        });
-        rTopPane.add(dropButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
 
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 2.png"))); // NOI18N
         searchButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -175,11 +178,30 @@ public class topPane extends javax.swing.JPanel {
         });
         rTopPane.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 115, 400, -1));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Expand_left_double.png"))); // NOI18N
+        jButton2.setText("   Back");
+        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setMaximumSize(new java.awt.Dimension(120, 40));
+        jButton2.setMinimumSize(new java.awt.Dimension(120, 40));
+        jButton2.setPreferredSize(new java.awt.Dimension(120, 40));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 951, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(770, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -188,7 +210,10 @@ public class topPane extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 148, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -200,10 +225,6 @@ public class topPane extends javax.swing.JPanel {
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_accountButtonActionPerformed
-
-    private void dropButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dropButtomActionPerformed
 
     private void searchBarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchBarFocusGained
         if (searchBar.getText().equals("Search for something")) {
@@ -254,10 +275,19 @@ public class topPane extends javax.swing.JPanel {
         //allComic.setForeground(Color.WHITE);
     }//GEN-LAST:event_roundedButton1MouseEntered
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accountButton;
-    private javax.swing.JButton dropButtom;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel rTopPane;

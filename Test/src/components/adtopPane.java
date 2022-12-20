@@ -19,12 +19,12 @@ import javax.swing.plaf.basic.BasicButtonUI;
  */
 public class adtopPane extends javax.swing.JPanel {
 
-    public AdTopBut getAdTopBut1() {
-        return adTopBut1;
+    public JButton getAdTopBut1() {
+        return jButton2;
     }
 
     public void setAdTopBut1(AdTopBut adTopBut1) {
-        this.adTopBut1 = adTopBut1;
+        this.jButton2 = jButton2;
     }
 
     /**
@@ -35,7 +35,7 @@ public class adtopPane extends javax.swing.JPanel {
         jSeparator1.setBackground(new Color(238,238,238));
         jSeparator2.setBackground(new Color(238,238,238));
 //        allComicButton.setBackground(new Color(242,242,242));
-        JButton [] btns = {accountButton,dropButtom};
+        JButton [] btns = {accountButton};
         for (JButton btn : btns){
             btn.setUI(new BasicButtonUI());
             btn.setBackground(new Color(255,255,255));
@@ -95,10 +95,9 @@ public class adtopPane extends javax.swing.JPanel {
 
         rTopPane = new javax.swing.JPanel();
         accountButton = new javax.swing.JButton();
-        dropButtom = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        adTopBut1 = new componentAdmin.AdTopBut();
+        jButton2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(951, 147));
 
@@ -118,15 +117,6 @@ public class adtopPane extends javax.swing.JPanel {
         });
         rTopPane.add(accountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 50, 40));
 
-        dropButtom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 3.png"))); // NOI18N
-        dropButtom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        dropButtom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dropButtomActionPerformed(evt);
-            }
-        });
-        rTopPane.add(dropButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
-
         jSeparator1.setBackground(new java.awt.Color(238, 238, 233));
         jSeparator1.setForeground(new java.awt.Color(238, 238, 233));
         jSeparator1.setPreferredSize(new java.awt.Dimension(951, 10));
@@ -136,7 +126,23 @@ public class adtopPane extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(238, 238, 233));
         jSeparator2.setPreferredSize(new java.awt.Dimension(951, 10));
         rTopPane.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
-        rTopPane.add(adTopBut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Expand_left_double.png"))); // NOI18N
+        jButton2.setText("   Back");
+        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setMaximumSize(new java.awt.Dimension(120, 40));
+        jButton2.setMinimumSize(new java.awt.Dimension(120, 40));
+        jButton2.setPreferredSize(new java.awt.Dimension(120, 40));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        rTopPane.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -164,10 +170,6 @@ public class adtopPane extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_accountButtonActionPerformed
 
-    private void dropButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dropButtomActionPerformed
-
     private void allComicButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allComicButtonMouseEntered
 //        allComicButton.setBackground(Color.BLACK);
 //        allComic.setForeground(Color.WHITE);
@@ -178,11 +180,14 @@ public class adtopPane extends javax.swing.JPanel {
 //        allComic.setForeground(Color.BLACK);
     }//GEN-LAST:event_allComicButtonMouseExited
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accountButton;
-    private componentAdmin.AdTopBut adTopBut1;
-    private javax.swing.JButton dropButtom;
+    private javax.swing.JButton jButton2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel rTopPane;
