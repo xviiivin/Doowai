@@ -13,7 +13,9 @@
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/topPane.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/frame/AdminFrame.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/componentAdmin/AdminBut3.java</file>
+            <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/RoundedBorder.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/model/CategoryModel.java</file>
+            <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/view/ReadFavourite.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/view/ReadCartoon.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/componentAdmin/AdTopBut3.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/util/Useful.java</file>
@@ -22,6 +24,7 @@
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/util/Sqlite.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/componentAdmin/Card.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/model/ChapterModel.java</file>
+            <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/RoundedFewButton.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/Main.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/componentAdmin/AdTopBut.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/Read2.java</file>
@@ -34,11 +37,14 @@
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/topPaneRead.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/model/UsersModel.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/LoopJLabel.java</file>
+            <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/topPaneza.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/adtopPane.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/AddCategory.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/controller/AuthController.java</file>
+            <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/topPane1.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/view/AdThree.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/AddCartoon.java</file>
+            <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/components/topPaneRead1.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/componentAdmin/PanelRound.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/componentAdmin/Card2.java</file>
             <file>file:/C:/Users/Few/Documents/NetBeansProjects/JavaApplication1/src/frame/Mainframe.java</file>

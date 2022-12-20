@@ -6,9 +6,13 @@ package components;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicButtonUI;
 import model.UsersModel;
@@ -18,7 +22,9 @@ import model.UsersModel;
  * @author niniewww
  */
 public class topPane extends javax.swing.JPanel {
+
     private UsersModel infoUser;
+
     public JTextField getSearchBar() {
         return searchBar;
     }
@@ -27,21 +33,55 @@ public class topPane extends javax.swing.JPanel {
         this.searchBar = searchBar;
     }
 
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    
     /**
      * Creates new form topPane
      */
     public topPane(UsersModel infoUser) {
         this.infoUser = infoUser;
         initComponents();
+
+        jButton2.setUI(new BasicButtonUI() {
+            @Override
+            public void update(Graphics g, JComponent c) {
+                if (c.isOpaque()) {
+                    Color fillColor = c.getBackground();
+
+                    AbstractButton button = (AbstractButton) c;
+                    ButtonModel model = button.getModel();
+
+                    if (model.isPressed()) {
+                        fillColor = fillColor.darker();
+                    } else if (model.isRollover()) {
+                        fillColor = fillColor.brighter();
+                    }
+
+                    g.setColor(fillColor);
+                    g.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), 20, 20);
+                }
+                paint(g, c);
+            }
+        });
+
+  
+
         addPlaceholderStyle(searchBar);
         removePlaceholderStyle(searchBar);
-        jSeparator1.setBackground(new Color(238,238,238));
-        jSeparator2.setBackground(new Color(238,238,238));
+        jSeparator1.setBackground(new Color(238, 238, 238));
+        jSeparator2.setBackground(new Color(238, 238, 238));
 //        roundedButton1.setBackground(new Color(242,242,242));
-        JButton [] btns = {accountButton,searchButton};
-        for (JButton btn : btns){
+        JButton[] btns = {accountButton, searchButton};
+        for (JButton btn : btns) {
             btn.setUI(new BasicButtonUI());
-            btn.setBackground(new Color(255,255,255));
+            btn.setBackground(new Color(255, 255, 255));
             btn.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -57,33 +97,33 @@ public class topPane extends javax.swing.JPanel {
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    if (e.getSource().equals(btn)){
-                         btn.setBackground(Color.LIGHT_GRAY);
+                    if (e.getSource().equals(btn)) {
+                        btn.setBackground(Color.LIGHT_GRAY);
                     }
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
                     btn.setForeground(Color.black);
-                    btn.setBackground(new Color(255,255,255));
+                    btn.setBackground(new Color(255, 255, 255));
                 }
             });
-        }   
+        }
     }
-    
-    private void addPlaceholderStyle(JTextField searchBar){
+
+    private void addPlaceholderStyle(JTextField searchBar) {
         Font font = searchBar.getFont();
         font = font.deriveFont(Font.ITALIC);
         searchBar.setFont(font);
         searchBar.setForeground(Color.gray);
     }
-    
-    private void removePlaceholderStyle(JTextField searchBar){
+
+    private void removePlaceholderStyle(JTextField searchBar) {
         Font font = searchBar.getFont();
         font = font.deriveFont(Font.PLAIN | Font.BOLD);
         searchBar.setFont(font);
         searchBar.setForeground(Color.GRAY);
-    }        
+    }
 //    
 //    
 //
@@ -183,7 +223,7 @@ public class topPane extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Expand_left_double.png"))); // NOI18N
         jButton2.setText("   Back");
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setMaximumSize(new java.awt.Dimension(120, 40));
         jButton2.setMinimumSize(new java.awt.Dimension(120, 40));
@@ -236,14 +276,14 @@ public class topPane extends javax.swing.JPanel {
     }//GEN-LAST:event_searchBarFocusGained
 
     private void searchBarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchBarFocusLost
-        if (searchBar.getText().length()==0) {
+        if (searchBar.getText().length() == 0) {
             addPlaceholderStyle(searchBar);
             searchBar.setText("Search for something");
         }
     }//GEN-LAST:event_searchBarFocusLost
 
     private void searchBarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBarMouseClicked
- 
+
     }//GEN-LAST:event_searchBarMouseClicked
 
     private void searchBarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchBarMouseExited
