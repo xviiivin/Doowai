@@ -11,13 +11,14 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicButtonUI;
+import model.UsersModel;
 
 /**
  *
  * @author niniewww
  */
 public class topPane extends javax.swing.JPanel {
-
+    private UsersModel infoUser;
     public JTextField getSearchBar() {
         return searchBar;
     }
@@ -29,7 +30,8 @@ public class topPane extends javax.swing.JPanel {
     /**
      * Creates new form topPane
      */
-    public topPane() {
+    public topPane(UsersModel infoUser) {
+        this.infoUser = infoUser;
         initComponents();
         addPlaceholderStyle(searchBar);
         removePlaceholderStyle(searchBar);
@@ -178,9 +180,7 @@ public class topPane extends javax.swing.JPanel {
         });
         rTopPane.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 115, 400, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Expand_left_double.png"))); // NOI18N
         jButton2.setText("   Back");
         jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -224,6 +224,7 @@ public class topPane extends javax.swing.JPanel {
 
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         // TODO add your handling code here:
+        new modalUser(infoUser);
     }//GEN-LAST:event_accountButtonActionPerformed
 
     private void searchBarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchBarFocusGained

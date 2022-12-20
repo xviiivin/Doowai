@@ -76,7 +76,7 @@ public class AdminController implements ActionListener, MouseListener {
         //adThree = new AdThree();
         //adFour = new AdFour();
         adSide = new adsidePane();
-        adTop = new adtopPane();
+        adTop = new adtopPane(user);
 
         adminLayout.getAdminNavPanel().setLayout(new BorderLayout());
         adminLayout.getAdminNavPanel().add(adSide);

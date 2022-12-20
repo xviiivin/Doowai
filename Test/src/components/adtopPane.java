@@ -12,13 +12,14 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicButtonUI;
+import model.UsersModel;
 
 /**
  *
  * @author niniewww
  */
 public class adtopPane extends javax.swing.JPanel {
-
+    private UsersModel infoUser;
     public JButton getAdTopBut1() {
         return jButton2;
     }
@@ -30,7 +31,8 @@ public class adtopPane extends javax.swing.JPanel {
     /**
      * Creates new form topPane
      */
-    public adtopPane() {
+    public adtopPane(UsersModel infoUser) {
+        this.infoUser = infoUser;
         initComponents();
         jSeparator1.setBackground(new Color(238,238,238));
         jSeparator2.setBackground(new Color(238,238,238));
@@ -168,6 +170,7 @@ public class adtopPane extends javax.swing.JPanel {
 
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         // TODO add your handling code here:
+        new modalUser(infoUser);
     }//GEN-LAST:event_accountButtonActionPerformed
 
     private void allComicButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_allComicButtonMouseEntered

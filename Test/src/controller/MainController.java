@@ -69,9 +69,9 @@ public class MainController implements ActionListener, MouseListener, KeyListene
 
         navPanel = new sidePane();
 
-        topPanel = new topPane();
-        topRead1 = new topPaneRead1();
-        topRead = new topPaneRead();
+        topPanel = new topPane(user);
+        topRead1 = new topPaneRead1(user);
+        topRead = new topPaneRead(user);
         //ReadCar = new ReadCartoon();
         //readOne = new ReadOne();
         readMain = new ReadMain();
