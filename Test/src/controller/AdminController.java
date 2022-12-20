@@ -102,8 +102,7 @@ public class AdminController implements ActionListener, MouseListener {
         arraylist1.add(adOne);
         previous.add(arraylist1);
         this.ChangeAdminBody();
-        adSide.getjButton10().addActionListener(this);
-
+        adSide.getPanelRound2().addMouseListener(this);
         adTop.getAdTopBut1().addMouseListener(this);
     }
 
@@ -212,7 +211,10 @@ public class AdminController implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource().equals(adTop.getAdTopBut1())) {
+        if (e.getSource().equals(adSide.getPanelRound2())) {
+            adminFrame.setVisible(false);
+            new AuthController();
+        } else if (e.getSource().equals(adTop.getAdTopBut1())) {
 
             if (previous.size() - 2 < 0) {
                 JOptionPane.showMessageDialog(null, "Not have page to previous !!!", "Error", JOptionPane.ERROR_MESSAGE);

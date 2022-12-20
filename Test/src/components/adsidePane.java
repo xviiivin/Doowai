@@ -1,98 +1,25 @@
 package components;
 
+import componentAdmin.PanelRound;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
 
 public class adsidePane extends javax.swing.JPanel {
-   
+
     public adsidePane() {
         initComponents();
-        JButton [] btns = {romanticButton,dramaButton,fictionButton,comedyButton,actionButton};
-        for (JButton btn : btns){
-            btn.setUI(new BasicButtonUI());
-            btn.setBackground(new Color(255,255,255));
-            btn.addMouseListener(new MouseListener() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    if (e.getSource().equals(romanticButton)){
-                        romanticButton.setForeground(Color.PINK);
-                    }
-                    else if (e.getSource().equals(actionButton)){
-                        actionButton.setForeground(Color.ORANGE);
-                    }
-                    else if (e.getSource().equals(dramaButton)){
-                        dramaButton.setForeground(Color.MAGENTA);
-                    }
-                    else if (e.getSource().equals(fictionButton)){
-                        fictionButton.setForeground(Color.CYAN);
-                    }
-                    else if (e.getSource().equals(comedyButton)){
-                        comedyButton.setForeground(Color.GREEN);
-                    }
-                    else {
-                        btn.setBackground(Color.LIGHT_GRAY);
-                    }
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    btn.setForeground(Color.black);
-                    btn.setBackground(new Color(255,255,255));
-                }
-            });
-        }
-
-        JPanel [] pn = {panelRound1, panelRound3};
-        for (JPanel pnl : pn){
-            pnl.setBackground(new Color(255,255,255));
-            pnl.addMouseListener(new MouseListener() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    if (e.getSource().equals(pnl)){
-                            pnl.setBackground(Color.LIGHT_GRAY);
-                    }
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    pnl.setBackground(Color.WHITE);
-                }
-            });
-        }
     }
 
-    public JButton getjButton10() {
-        return jButton10;
+    public PanelRound getPanelRound2() {
+        return panelRound2;
     }
-    
-   
+
+    public void setPanelRound2(PanelRound panelRound2) {
+        this.panelRound2 = panelRound2;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -105,14 +32,10 @@ public class adsidePane extends javax.swing.JPanel {
         panelRound3 = new components.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        romanticButton = new javax.swing.JButton();
-        actionButton = new javax.swing.JButton();
-        dramaButton = new javax.swing.JButton();
-        fictionButton = new javax.swing.JButton();
-        comedyButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
+        panelRound2 = new componentAdmin.PanelRound();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         topSidePane1 = new javax.swing.JPanel();
         panelRound1 = new components.PanelRound();
         dooWai1 = new javax.swing.JLabel();
@@ -194,112 +117,23 @@ public class adsidePane extends javax.swing.JPanel {
 
         sidePane.add(sp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 166, -1, 50));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(243, 172));
-
-        romanticButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 2.png"))); // NOI18N
-        romanticButton.setText(" Romantic");
-        romanticButton.setAlignmentY(0.8F);
-        romanticButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        romanticButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        romanticButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                romanticButtonActionPerformed(evt);
-            }
-        });
-
-        actionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 6.png"))); // NOI18N
-        actionButton.setText(" Action");
-        actionButton.setToolTipText("");
-        actionButton.setAlignmentY(0.8F);
-        actionButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        actionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        actionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actionButtonActionPerformed(evt);
-            }
-        });
-
-        dramaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 5.png"))); // NOI18N
-        dramaButton.setText(" Drama");
-        dramaButton.setAlignmentY(0.8F);
-        dramaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        dramaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        dramaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dramaButtonActionPerformed(evt);
-            }
-        });
-
-        fictionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 4.png"))); // NOI18N
-        fictionButton.setText(" Fiction");
-        fictionButton.setAlignmentY(0.8F);
-        fictionButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        fictionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fictionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fictionButtonActionPerformed(evt);
-            }
-        });
-
-        comedyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 3.png"))); // NOI18N
-        comedyButton.setText(" Comedy");
-        comedyButton.setAlignmentY(0.8F);
-        comedyButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        comedyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        comedyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comedyButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(romanticButton)
-                    .addComponent(fictionButton)
-                    .addComponent(dramaButton)
-                    .addComponent(actionButton)
-                    .addComponent(comedyButton))
-                .addContainerGap(86, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(romanticButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(actionButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dramaButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fictionButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comedyButton)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-
-        sidePane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, 170));
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(243, 365));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton10.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1828427 1.png"))); // NOI18N
-        jButton10.setText("  Logout");
-        jButton10.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 160, 40));
+        panelRound2.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1828427 1.png"))); // NOI18N
+        panelRound2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Logout");
+        panelRound2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
+
+        jPanel3.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 160, 40));
 
         sidePane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 463, -1, 370));
 
@@ -337,26 +171,6 @@ public class adsidePane extends javax.swing.JPanel {
         add(sidePane, java.awt.BorderLayout.WEST);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void romanticButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_romanticButtonActionPerformed
-
-    }//GEN-LAST:event_romanticButtonActionPerformed
-
-    private void actionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_actionButtonActionPerformed
-
-    private void dramaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dramaButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dramaButtonActionPerformed
-
-    private void fictionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fictionButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fictionButtonActionPerformed
-
-    private void comedyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comedyButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comedyButtonActionPerformed
-
     private void searchListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchListMouseClicked
 //        JOptionPane.showMessageDialog(rTopPane, searchList.getSelectedValue(), "get stars", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_searchListMouseClicked
@@ -365,32 +179,24 @@ public class adsidePane extends javax.swing.JPanel {
 //        jScrollPane2.setVisible(false);
     }//GEN-LAST:event_searchListMouseExited
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void topSidePane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_topSidePane1FocusGained
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_topSidePane1FocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actionButton;
-    private javax.swing.JButton comedyButton;
     private javax.swing.JLabel dooWai1;
-    private javax.swing.JButton dramaButton;
-    private javax.swing.JButton fictionButton;
-    private javax.swing.JButton jButton10;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private components.PanelRound panelRound1;
+    private componentAdmin.PanelRound panelRound2;
     private components.PanelRound panelRound3;
-    private javax.swing.JButton romanticButton;
     private javax.swing.JList<String> searchList;
     private javax.swing.JPanel sidePane;
     private javax.swing.JPanel sp2;

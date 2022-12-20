@@ -95,6 +95,7 @@ public class CartoonModel {
         }
         return users;
     }
+    
 
     public static List<CartoonModel> all(int idcategory) {
         conn = Sqlite.getConnection();
@@ -126,6 +127,31 @@ public class CartoonModel {
             Statement st = conn.createStatement();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM cartoon WHERE name LIKE ?");
             ps.setString(1, "%" + keyword + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CartoonModel user = new CartoonModel();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setDetail(rs.getString("detail"));
+                user.setImg(rs.getString("img"));
+                user.setIdcategory(rs.getInt("idcategory"));
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return users;
+    }
+    
+      public static List<CartoonModel> searchWithIdcategory(int idcategory, String keyword) {
+        conn = Sqlite.getConnection();
+        List<CartoonModel> users = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM cartoon WHERE idcategory = ? AND name LIKE ?");
+            ps.setInt(1, idcategory);            
+            ps.setString(2, "%" + keyword + "%");
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 CartoonModel user = new CartoonModel();
