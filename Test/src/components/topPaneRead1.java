@@ -29,6 +29,7 @@ public class topPaneRead1 extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         accountButton = new javax.swing.JButton();
+        dropButtom = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -52,6 +53,15 @@ public class topPaneRead1 extends javax.swing.JPanel {
             }
         });
         jPanel1.add(accountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(849, 40, 50, 40));
+
+        dropButtom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 3.png"))); // NOI18N
+        dropButtom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        dropButtom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dropButtomActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dropButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(899, 50, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
         jLabel1.setText("Next");
@@ -100,6 +110,10 @@ public class topPaneRead1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_accountButtonActionPerformed
 
+    private void dropButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dropButtomActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -107,6 +121,7 @@ public class topPaneRead1 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accountButton;
+    private javax.swing.JButton dropButtom;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

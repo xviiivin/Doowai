@@ -1,47 +1,25 @@
 package components;
 
+import componentAdmin.PanelRound;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
 
 public class adsidePane extends javax.swing.JPanel {
-   
+
     public adsidePane() {
-        initComponents();                    
-       
-        JPanel [] pn = {panelRound1,panelRound2,panelRound3};
-        for (JPanel pnl : pn){
-            pnl.setBackground(new Color(255,255,255));
-            pnl.addMouseListener(new MouseListener() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    if (e.getSource().equals(pnl)){
-                            pnl.setBackground(Color.LIGHT_GRAY);
-                    }
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    pnl.setBackground(Color.WHITE);
-                }
-            });
-        }
+        initComponents();
     }
-   
+
+    public PanelRound getPanelRound2() {
+        return panelRound2;
+    }
+
+    public void setPanelRound2(PanelRound panelRound2) {
+        this.panelRound2 = panelRound2;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -203,7 +181,7 @@ public class adsidePane extends javax.swing.JPanel {
 
     private void topSidePane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_topSidePane1FocusGained
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_topSidePane1FocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
