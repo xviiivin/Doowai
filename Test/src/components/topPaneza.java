@@ -36,7 +36,7 @@ public class topPaneza extends javax.swing.JPanel {
         jSeparator1.setBackground(new Color(238,238,238));
         jSeparator2.setBackground(new Color(238,238,238));
 //        roundedButton1.setBackground(new Color(242,242,242));
-        JButton [] btns = {accountButton,searchButton,dropButtom};
+        JButton [] btns = {accountButton,searchButton};
         for (JButton btn : btns){
             btn.setUI(new BasicButtonUI());
             btn.setBackground(new Color(255,255,255));
@@ -96,7 +96,6 @@ public class topPaneza extends javax.swing.JPanel {
 
         rTopPane = new javax.swing.JPanel();
         accountButton = new javax.swing.JButton();
-        dropButtom = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -119,15 +118,6 @@ public class topPaneza extends javax.swing.JPanel {
             }
         });
         rTopPane.add(accountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 50, 40));
-
-        dropButtom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 3.png"))); // NOI18N
-        dropButtom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        dropButtom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dropButtomActionPerformed(evt);
-            }
-        });
-        rTopPane.add(dropButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
 
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image 2.png"))); // NOI18N
         searchButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -201,10 +191,6 @@ public class topPaneza extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_accountButtonActionPerformed
 
-    private void dropButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dropButtomActionPerformed
-
     private void searchBarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchBarFocusGained
         if (searchBar.getText().equals("Search for something")) {
             searchBar.setText(null);
@@ -257,7 +243,6 @@ public class topPaneza extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accountButton;
-    private javax.swing.JButton dropButtom;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel rTopPane;

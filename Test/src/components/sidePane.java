@@ -1,33 +1,15 @@
 package components;
 
 import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicButtonUI;
-import model.CategoryModel;
 
 public class sidePane extends javax.swing.JPanel {
 
-    private int id;
-    
-    private List<CategoryModel> fewza;
-
-    private JButton[] jbf;
-
     public JLabel getjLabel3() {
         return jLabel3;
-    }
-
-    public List<CategoryModel> getFewza() {
-        return fewza;
-    }
-
-    public void setFewza(List<CategoryModel> fewza) {
-        this.fewza = fewza;
     }
 
     public PanelRound getPanelRound2() {
@@ -46,71 +28,59 @@ public class sidePane extends javax.swing.JPanel {
         this.panelRound3 = panelRound3;
     }
 
-    public JButton[] getJbf() {
-        return jbf;
-    }
-
-    public void setJbf(JButton[] jbf) {
-        this.jbf = jbf;
-    }
-
-    public void LoopListCategory(List<CategoryModel> few) {
-        fewza = few;
-        JButton fewbut;
-        jbf = new JButton[few.size()];
-        if (few.size() == 0) {
-            jPanel1.setLayout(new GridLayout(1, 0));
-        } else {
-            jPanel1.setLayout(new GridLayout(few.size(), 0));
-        }
-
-        for (int i = 0; i < few.size(); i++) {
-            fewbut = new JButton(few.get(i).getName());
-            fewbut.setUI(new BasicButtonUI());
-            fewbut.setBackground(Color.white);
-            fewbut.setBorder(new EmptyBorder(0, 0, 0, 0));
-            jPanel1.add(fewbut);
-            jbf[i] = fewbut;
-        }
-        if (jbf.length > 0) {
-            for (JButton btn : jbf) {
-                btn.setUI(new BasicButtonUI());
-                btn.setBackground(new Color(255, 255, 255));
-                btn.addMouseListener(new MouseListener() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                    }
-
-                    @Override
-                    public void mousePressed(MouseEvent e) {
-                    }
-
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-                    }
-
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        btn.setBackground(Color.LIGHT_GRAY);
-                    }
-
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        btn.setForeground(Color.black);
-                        btn.setBackground(new Color(255, 255, 255));
-                    }
-                });
-            }
-        }
-
-    }
 
     public sidePane() {
         initComponents();
+        JButton [] btns = {romanticButton,dramaButton,fictionButton,comedyButton,actionButton};
+        for (JButton btn : btns){
+            btn.setUI(new BasicButtonUI());
+            btn.setBackground(new Color(255,255,255));
+            btn.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                }
 
-        JPanel[] pn = {panelRound1, panelRound2, panelRound3, panelRound4};
-        for (JPanel pnl : pn) {
-            pnl.setBackground(new Color(255, 255, 255));
+                @Override
+                public void mousePressed(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    if (e.getSource().equals(romanticButton)){
+                        romanticButton.setForeground(Color.PINK);
+                    }
+                    else if (e.getSource().equals(actionButton)){
+                        actionButton.setForeground(Color.ORANGE);
+                    }
+                    else if (e.getSource().equals(dramaButton)){
+                        dramaButton.setForeground(Color.MAGENTA);
+                    }
+                    else if (e.getSource().equals(fictionButton)){
+                        fictionButton.setForeground(Color.CYAN);
+                    }
+                    else if (e.getSource().equals(comedyButton)){
+                        comedyButton.setForeground(Color.GREEN);
+                    }
+                    else {
+                        btn.setBackground(Color.LIGHT_GRAY);
+                    }
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    btn.setForeground(Color.black);
+                    btn.setBackground(new Color(255,255,255));
+                }
+            });
+        }
+
+        JPanel [] pn = {panelRound1,panelRound2,panelRound3,panelRound4};
+        for (JPanel pnl : pn){
+            pnl.setBackground(new Color(255,255,255));
             pnl.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -126,8 +96,8 @@ public class sidePane extends javax.swing.JPanel {
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    if (e.getSource().equals(pnl)) {
-                        pnl.setBackground(Color.LIGHT_GRAY);
+                    if (e.getSource().equals(pnl)){
+                            pnl.setBackground(Color.LIGHT_GRAY);
                     }
                 }
 
@@ -146,7 +116,8 @@ public class sidePane extends javax.swing.JPanel {
     public void setPanelRound4(PanelRound panelRound4) {
         this.panelRound4 = panelRound4;
     }
-
+    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -168,6 +139,11 @@ public class sidePane extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        romanticButton = new javax.swing.JButton();
+        actionButton = new javax.swing.JButton();
+        dramaButton = new javax.swing.JButton();
+        fictionButton = new javax.swing.JButton();
+        comedyButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         panelRound4 = new components.PanelRound();
         jLabel6 = new javax.swing.JLabel();
@@ -225,6 +201,7 @@ public class sidePane extends javax.swing.JPanel {
 
         dooWai.setBackground(new java.awt.Color(0, 0, 0));
         dooWai.setFont(new java.awt.Font("Ayuthaya", 1, 16)); // NOI18N
+        dooWai.setForeground(new java.awt.Color(0, 0, 0));
         dooWai.setText("DooWai");
         dooWai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelRound1.add(dooWai, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 48));
@@ -254,6 +231,7 @@ public class sidePane extends javax.swing.JPanel {
         panelRound2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Favorite");
         panelRound2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 10, 80, 20));
 
@@ -277,6 +255,7 @@ public class sidePane extends javax.swing.JPanel {
         panelRound3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Category");
         panelRound3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
 
@@ -286,9 +265,93 @@ public class sidePane extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(243, 172));
-        java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
-        jPanel1Layout.rowHeights = new int[] {1};
+
+        romanticButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 2.png"))); // NOI18N
+        romanticButton.setText(" Romantic");
+        romanticButton.setAlignmentY(0.8F);
+        romanticButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        romanticButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        romanticButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                romanticButtonActionPerformed(evt);
+            }
+        });
+
+        actionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 6.png"))); // NOI18N
+        actionButton.setText(" Action");
+        actionButton.setToolTipText("");
+        actionButton.setAlignmentY(0.8F);
+        actionButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        actionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        actionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionButtonActionPerformed(evt);
+            }
+        });
+
+        dramaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 5.png"))); // NOI18N
+        dramaButton.setText(" Drama");
+        dramaButton.setAlignmentY(0.8F);
+        dramaButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        dramaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dramaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dramaButtonActionPerformed(evt);
+            }
+        });
+
+        fictionButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 4.png"))); // NOI18N
+        fictionButton.setText(" Fiction");
+        fictionButton.setAlignmentY(0.8F);
+        fictionButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        fictionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fictionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fictionButtonActionPerformed(evt);
+            }
+        });
+
+        comedyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rectangle 3.png"))); // NOI18N
+        comedyButton.setText(" Comedy");
+        comedyButton.setAlignmentY(0.8F);
+        comedyButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        comedyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comedyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comedyButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(88, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(romanticButton)
+                    .addComponent(fictionButton)
+                    .addComponent(dramaButton)
+                    .addComponent(actionButton)
+                    .addComponent(comedyButton))
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(romanticButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(actionButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dramaButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fictionButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comedyButton)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
         sidePane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 288, -1, 170));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -307,6 +370,7 @@ public class sidePane extends javax.swing.JPanel {
         panelRound4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Logout");
         panelRound4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
 
@@ -317,6 +381,26 @@ public class sidePane extends javax.swing.JPanel {
         add(sidePane, java.awt.BorderLayout.WEST);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void romanticButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_romanticButtonActionPerformed
+
+    }//GEN-LAST:event_romanticButtonActionPerformed
+
+    private void actionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actionButtonActionPerformed
+
+    private void dramaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dramaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dramaButtonActionPerformed
+
+    private void fictionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fictionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fictionButtonActionPerformed
+
+    private void comedyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comedyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comedyButtonActionPerformed
+
     private void searchListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchListMouseClicked
 //        JOptionPane.showMessageDialog(rTopPane, searchList.getSelectedValue(), "get stars", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_searchListMouseClicked
@@ -326,7 +410,11 @@ public class sidePane extends javax.swing.JPanel {
     }//GEN-LAST:event_searchListMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actionButton;
+    private javax.swing.JButton comedyButton;
     private javax.swing.JLabel dooWai;
+    private javax.swing.JButton dramaButton;
+    private javax.swing.JButton fictionButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -342,6 +430,7 @@ public class sidePane extends javax.swing.JPanel {
     private components.PanelRound panelRound2;
     private components.PanelRound panelRound3;
     private components.PanelRound panelRound4;
+    private javax.swing.JButton romanticButton;
     private javax.swing.JList<String> searchList;
     private javax.swing.JPanel sidePane;
     private javax.swing.JPanel sp2;

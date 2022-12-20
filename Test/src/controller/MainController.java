@@ -31,9 +31,7 @@ import model.UsersModel;
 import util.Useful;
 import view.*;
 import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.plaf.basic.BasicButtonUI;
 import model.ChapterImgModel;
 import model.FavouriteModel;
 
@@ -43,7 +41,7 @@ public class MainController implements ActionListener, MouseListener, KeyListene
     private MainLayout mainLayout;
     private sidePane navPanel;
 //    private CategoryScrollPane contentPanel;
-    private topPane topPanel;
+    private topPaneza topPanel;
 
     private topPaneRead topRead;
     private topPaneRead1 topRead1;
@@ -56,20 +54,15 @@ public class MainController implements ActionListener, MouseListener, KeyListene
     private UsersModel Account;
 
     private String mainbodypanel = "adOne";
-
-    private int idcategoryzaza = 0;
-
 //    private AdminLayout adminLayout;
 //    private AdminController adminCon;
+
     public MainController(UsersModel user) {
         this.Account = user;
-
         mainFrame = new Mainframe();
         mainLayout = new MainLayout();
-
         navPanel = new sidePane();
-
-        topPanel = new topPane();
+        topPanel = new topPaneza();
         topRead1 = new topPaneRead1();
         topRead = new topPaneRead();
         //ReadCar = new ReadCartoon();
@@ -101,14 +94,11 @@ public class MainController implements ActionListener, MouseListener, KeyListene
         navPanel.getPanelRound2().addMouseListener(this);
         navPanel.getPanelRound3().addMouseListener(this);
 
-        List<CategoryModel> few = new CategoryModel().all();
-        navPanel.LoopListCategory(few);
-
-        for (int i = 0; i < few.size(); i++) {
-            navPanel.getJbf()[i].addActionListener(this);
-        }
-
         changeMainpage();
+    }
+
+    public MainController() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void changeMainpage() {
@@ -152,7 +142,6 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             mainLayout.getTopPanel().removeAll();
             mainLayout.getTopPanel().add(topRead1);
             mainLayout.getTopPanel().validate();
-            mainLayout.getTopPanel().repaint();
 
             //topRead
         } else if (this.mainbodypanel.equals("readFavourite")) {
@@ -177,29 +166,6 @@ public class MainController implements ActionListener, MouseListener, KeyListene
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        for (int i = 0; i < navPanel.getJbf().length; i++) {
-
-            if (e.getSource().equals(navPanel.getJbf()[i])) {
-                this.mainbodypanel = "readMain";
-                this.changeMainpage();
-                idcategoryzaza = navPanel.getFewza().get(i).getId();
-                System.out.println(navPanel.getFewza().get(i).getId());
-                readMain.getCartoonScrollPaneUser1().loopCardWithData(new CartoonModel().searchWithIdcategory(navPanel.getFewza().get(i).getId(), ""), Account.getId());
-                CardMain[] card = readMain.getCartoonScrollPaneUser1().getCard();
-                for (int j = 0; j < card.length; j++) {
-                    card[j].addMouseListener(this);
-                }
-
-                mainLayout.getTopPanel().removeAll();
-                mainLayout.getTopPanel().add(topPanel);
-                mainLayout.getTopPanel().validate();
-                mainLayout.getTopPanel().repaint();
-
-            }
-
-        }
-
     }
 
     @Override
@@ -209,8 +175,6 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             this.mainbodypanel = "readFavourite";
             this.changeMainpage();
         } else if (e.getSource().equals(navPanel.getPanelRound3())) {
-            this.idcategoryzaza = 0;
-
             this.mainbodypanel = "readMain";
             this.changeMainpage();
 
@@ -325,24 +289,13 @@ public class MainController implements ActionListener, MouseListener, KeyListene
     @Override
     public void keyReleased(KeyEvent e) {
         if (this.mainbodypanel.equals("readMain")) {
-
             if (e.getSource().equals(topPanel.getSearchBar())) {
-                if (idcategoryzaza == 0) {
-                    readMain.getCartoonScrollPaneUser1().loopCardWithData(new CartoonModel().search(topPanel.getSearchBar().getText()), this.Account.getId());
-                    CardMain[] card = readMain.getCartoonScrollPaneUser1().getCard();
-                    for (int i = 0; i < card.length; i++) {
-                        card[i].addMouseListener(this);
-                    }
-                } else {
-                    readMain.getCartoonScrollPaneUser1().loopCardWithData(new CartoonModel().searchWithIdcategory(this.idcategoryzaza, ""), Account.getId());
-                    CardMain[] card = readMain.getCartoonScrollPaneUser1().getCard();
-                    for (int i = 0; i < card.length; i++) {
-                        card[i].addMouseListener(this);
-                    }
+                readMain.getCartoonScrollPaneUser1().loopCardWithData(new CartoonModel().search(topPanel.getSearchBar().getText()), this.Account.getId());
+                CardMain[] card = readMain.getCartoonScrollPaneUser1().getCard();
+                for (int i = 0; i < card.length; i++) {
+                    card[i].addMouseListener(this);
                 }
-
             }
-
         } else if (this.mainbodypanel.equals("readOne")) {
             if (e.getSource().equals(topPanel.getSearchBar())) {
                 System.out.println(topPanel.getSearchBar().getText());
