@@ -123,6 +123,7 @@ public class ChapterImgModel {
     public Boolean create(String name, int idchapter, int idcartoon, int idcategory) {
         conn = Sqlite.getConnection();
         try {
+
             PreparedStatement ps = conn.prepareStatement("INSERT INTO chapter_img (file_img, idchapter, idcartoon, idcategory) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, name);
             ps.setInt(2, idchapter);

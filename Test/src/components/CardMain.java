@@ -4,15 +4,17 @@
  */
 package components;
 
+import java.awt.Color;
 import javax.swing.JLabel;
+import util.Useful;
 
 /**
  *
  * @author sasimai
  */
 public class CardMain extends javax.swing.JPanel {
+
     private int id;
-    private Boolean check;
 
     public int getId() {
         return id;
@@ -21,15 +23,17 @@ public class CardMain extends javax.swing.JPanel {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     /**
      * Creates new form CardMain
      */
     public CardMain() {
+
         initComponents();
-        jLabel2.setVisible(true);
-        jLabel3.setVisible(false);
-        
+        jLabel3.setIcon(new Useful().FileImgtoImageIcon("image/heart1.png", 25, 25));
+
+        //jLabel3.setIcon(new Useful().FileImgtoImageIcon("image/heart2.png", 25, 25));
+
     }
 
     public JLabel getjLabel1() {
@@ -38,6 +42,14 @@ public class CardMain extends javax.swing.JPanel {
 
     public void setjLabel1(JLabel jLabel1) {
         this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
     }
 
     /**
@@ -50,7 +62,6 @@ public class CardMain extends javax.swing.JPanel {
     private void initComponents() {
 
         panelRound1 = new components.PanelRound();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -60,28 +71,17 @@ public class CardMain extends javax.swing.JPanel {
         panelRound1.setRoundTopRight(25);
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heart 1.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel2MousePressed(evt);
-            }
-        });
-        panelRound1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heart (1) 1.png"))); // NOI18N
-        panelRound1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2550224 1.png"))); // NOI18N
+        panelRound1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("tgtgt");
         panelRound1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 275));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,26 +91,9 @@ public class CardMain extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
-
-        if (check == false) {
-            jLabel2.setVisible(false);
-            jLabel3.setVisible(true);
-            check = !check;
-        }
-        else {
-            jLabel2.setVisible(true);
-            jLabel3.setVisible(false);
-            check = !check;
-        }
-        
-        
-    }//GEN-LAST:event_jLabel2MousePressed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private components.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables

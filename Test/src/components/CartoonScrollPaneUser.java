@@ -10,7 +10,9 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import model.CartoonModel;
+import model.FavouriteModel;
 import util.Useful;
 
 /**
@@ -20,7 +22,15 @@ import util.Useful;
 public class CartoonScrollPaneUser extends javax.swing.JPanel {
 
     private CardMain[] card;
-  
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
     /**
      * Creates new form CartoonScrollPaneUser
      */
@@ -35,8 +45,8 @@ public class CartoonScrollPaneUser extends javax.swing.JPanel {
     public void setCard(CardMain[] card) {
         this.card = card;
     }
-    
-    public void loopCardWithData(List<CartoonModel> catdata) {
+
+    public void loopCardWithData(List<CartoonModel> catdata, int iduser) {
         scrollPane1.removeAll();
         scrollPane1.repaint();
         jPanel1.removeAll();
@@ -58,6 +68,15 @@ public class CartoonScrollPaneUser extends javax.swing.JPanel {
                 cat[i].getjLabel1().setIcon(test);
             }
             cat[i].setId(catdata.get(i).getId());
+
+            FavouriteModel checkfavou = new FavouriteModel().findWithIdUserAndIdCartoon(iduser, catdata.get(i).getId());
+
+            if (checkfavou == null) {
+                cat[i].getjLabel3().setIcon(new Useful().FileImgtoImageIcon("image/heart1.png", 25, 25));
+            } else {
+                cat[i].getjLabel3().setIcon(new Useful().FileImgtoImageIcon("image/heart2.png", 25, 25));
+            }
+
             x++;
             if (x == 4) {
                 x = 0;

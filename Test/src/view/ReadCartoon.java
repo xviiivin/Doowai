@@ -37,7 +37,11 @@ public class ReadCartoon extends javax.swing.JPanel {
         initComponents();
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(18);
         try {
-            jPanel2.setLayout(new GridLayout(data.size(), 0));
+            if (data.size() == 0) {
+                jPanel2.setLayout(new GridLayout(1, 0));
+            } else {
+                jPanel2.setLayout(new GridLayout(data.size(), 0));
+            }
 
             for (int i = 0; i < data.size(); i++) {
                 f = new JLabel("", SwingConstants.CENTER);

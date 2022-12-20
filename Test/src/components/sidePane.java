@@ -7,7 +7,28 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 public class sidePane extends javax.swing.JPanel {
-   
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public PanelRound getPanelRound2() {
+        return panelRound2;
+    }
+
+    public void setPanelRound2(PanelRound panelRound2) {
+        this.panelRound2 = panelRound2;
+    }
+
+    public PanelRound getPanelRound3() {
+        return panelRound3;
+    }
+
+    public void setPanelRound3(PanelRound panelRound3) {
+        this.panelRound3 = panelRound3;
+    }
+
+
     public sidePane() {
         initComponents();
         JButton [] btns = {romanticButton,dramaButton,fictionButton,comedyButton,actionButton};
