@@ -4,15 +4,6 @@
  */
 package components;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.AbstractButton;
-import javax.swing.ButtonModel;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.plaf.basic.BasicButtonUI;
 import model.UsersModel;
 
 /**
@@ -20,73 +11,13 @@ import model.UsersModel;
  * @author sasimai
  */
 public class topPaneRead1 extends javax.swing.JPanel {
-
     private UsersModel infoUser;
-
     /**
      * Creates new form topPaneRead
      */
     public topPaneRead1(UsersModel infoUser) {
         this.infoUser = infoUser;
         initComponents();
-
-        jButton2.setUI(new BasicButtonUI() {
-            @Override
-            public void update(Graphics g, JComponent c) {
-                if (c.isOpaque()) {
-                    Color fillColor = c.getBackground();
-
-                    AbstractButton button = (AbstractButton) c;
-                    ButtonModel model = button.getModel();
-
-                    if (model.isPressed()) {
-                        fillColor = fillColor.darker();
-                    } else if (model.isRollover()) {
-                        fillColor = fillColor.brighter();
-                    }
-
-                    g.setColor(fillColor);
-                    g.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), 20, 20);
-                }
-                paint(g, c);
-            }
-        });
-
-
-        accountButton.setUI(new BasicButtonUI());
-        accountButton.setBackground(new Color(255, 255, 255));
-        accountButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                accountButton.setBackground(Color.LIGHT_GRAY);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                accountButton.setForeground(Color.black);
-                accountButton.setBackground(new Color(255, 255, 255));
-            }
-        });
-    }
-
-    public JButton getjButton2() {
-        return jButton2;
-    }
-
-    public void setjButton2(JButton jButton2) {
-        this.jButton2 = jButton2;
     }
 
     /**
@@ -101,6 +32,9 @@ public class topPaneRead1 extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         accountButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(951, 147));
@@ -121,6 +55,27 @@ public class topPaneRead1 extends javax.swing.JPanel {
             }
         });
         jPanel1.add(accountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(849, 40, 50, 40));
+
+        jLabel1.setFont(new java.awt.Font("Ayuthaya", 1, 13)); // NOI18N
+        jLabel1.setText("Next");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 45, -1, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Expand_right_double.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 48, -1, -1));
+
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMaximumSize(new java.awt.Dimension(120, 40));
+        jButton1.setMinimumSize(new java.awt.Dimension(120, 40));
+        jButton1.setPreferredSize(new java.awt.Dimension(120, 40));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,10 +104,17 @@ public class topPaneRead1 extends javax.swing.JPanel {
         new modalUser(infoUser);
     }//GEN-LAST:event_accountButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accountButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
