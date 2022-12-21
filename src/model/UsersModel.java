@@ -123,9 +123,9 @@ public class UsersModel {
         conn = Sqlite.getConnection();
         UsersModel users = null;
         try {
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE email = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE email = ? and password = ?");
             ps.setString(1, email);
-            ps.setString(1, password);
+            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 users = new UsersModel();
