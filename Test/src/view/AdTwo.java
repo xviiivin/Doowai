@@ -94,7 +94,7 @@ public class AdTwo extends javax.swing.JPanel {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(951, 602));
 
         catroonScrollPane1.setPreferredSize(new java.awt.Dimension(1194, 565));

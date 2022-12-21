@@ -22,6 +22,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import model.CartoonModel;
@@ -59,6 +60,8 @@ public class MainController implements ActionListener, MouseListener, KeyListene
 
     private int idcategoryzaza = 0;
 
+    private ArrayList<Object> previous = new ArrayList<Object>();
+
 //    private AdminLayout adminLayout;
 //    private AdminController adminCon;
     public MainController(UsersModel user) {
@@ -69,9 +72,9 @@ public class MainController implements ActionListener, MouseListener, KeyListene
 
         navPanel = new sidePane();
 
-        topPanel = new topPane();
-        topRead1 = new topPaneRead1();
-        topRead = new topPaneRead();
+        topPanel = new topPane(user);
+        topRead1 = new topPaneRead1(user);
+        topRead = new topPaneRead(user);
         //ReadCar = new ReadCartoon();
         //readOne = new ReadOne();
         readMain = new ReadMain();
@@ -108,7 +111,17 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             navPanel.getJbf()[i].addActionListener(this);
         }
 
+        topPanel.getjButton2().addActionListener(this);
+
+        topRead1.getjButton2().addActionListener(this);
+
+        ArrayList<Object> arraylist1 = new ArrayList<Object>();
+        arraylist1.add("readMain");
+        arraylist1.add(readMain);
+        previous.add(arraylist1);
+
         changeMainpage();
+
     }
 
     public void changeMainpage() {
@@ -116,6 +129,8 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             mainLayout.getBodyPanel().removeAll();
             mainLayout.getBodyPanel().add(readMain);
             mainLayout.getBodyPanel().validate();
+            mainLayout.getBodyPanel().repaint();
+
             readMain.getCartoonScrollPaneUser1().loopCardWithData(new CartoonModel().search(""), this.Account.getId());
             CardMain[] card = readMain.getCartoonScrollPaneUser1().getCard();
             for (int i = 0; i < card.length; i++) {
@@ -125,12 +140,15 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             mainLayout.getTopPanel().removeAll();
             mainLayout.getTopPanel().add(topPanel);
             mainLayout.getTopPanel().validate();
+            mainLayout.getTopPanel().repaint();
+
             topPanel.getSearchBar().addKeyListener(this);
 
         } else if (this.mainbodypanel.equals("readOne")) {
             mainLayout.getBodyPanel().removeAll();
             mainLayout.getBodyPanel().add(readOne);
             mainLayout.getBodyPanel().validate();
+            mainLayout.getBodyPanel().repaint();
 
             CartoonModel cardata = new CartoonModel().findWithId(readOne.getId());
 
@@ -144,10 +162,12 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             List<ChapterModel> chapdata = new ChapterModel().all(readOne.getId());
             readOne.getTableScrollpane1().loopTableWithData(chapdata, cardata.getName());
             readOne.getTableScrollpane1().getTable1().addMouseListener(this);
+
         } else if (this.mainbodypanel.equals("readCar")) {
             mainLayout.getBodyPanel().removeAll();
             mainLayout.getBodyPanel().add(readCar);
             mainLayout.getBodyPanel().validate();
+            mainLayout.getBodyPanel().repaint();
 
             mainLayout.getTopPanel().removeAll();
             mainLayout.getTopPanel().add(topRead1);
@@ -159,6 +179,8 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             mainLayout.getBodyPanel().removeAll();
             mainLayout.getBodyPanel().add(readFavourite);
             mainLayout.getBodyPanel().validate();
+            mainLayout.getBodyPanel().repaint();
+
             readFavourite.getCartoonScrollPaneUser1().loopCardWithData(new FavouriteModel().search(this.Account.getId(), ""), this.Account.getId());
             CardMain[] card = readFavourite.getCartoonScrollPaneUser1().getCard();
             for (int i = 0; i < card.length; i++) {
@@ -170,6 +192,8 @@ public class MainController implements ActionListener, MouseListener, KeyListene
             mainLayout.getTopPanel().add(topPanel);
             mainLayout.getTopPanel().validate();
 
+            mainLayout.getTopPanel().repaint();
+
             topPanel.getSearchBar().addKeyListener(this);
 
         }
@@ -178,26 +202,46 @@ public class MainController implements ActionListener, MouseListener, KeyListene
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        for (int i = 0; i < navPanel.getJbf().length; i++) {
-
-            if (e.getSource().equals(navPanel.getJbf()[i])) {
-                this.mainbodypanel = "readMain";
-                this.changeMainpage();
-                idcategoryzaza = navPanel.getFewza().get(i).getId();
-                System.out.println(navPanel.getFewza().get(i).getId());
-                readMain.getCartoonScrollPaneUser1().loopCardWithData(new CartoonModel().searchWithIdcategory(navPanel.getFewza().get(i).getId(), ""), Account.getId());
-                CardMain[] card = readMain.getCartoonScrollPaneUser1().getCard();
-                for (int j = 0; j < card.length; j++) {
-                    card[j].addMouseListener(this);
+        if (e.getActionCommand().equals("   Back")) {
+            System.out.println(previous.size());
+            if (previous.size() - 2 < 0) {
+                JOptionPane.showMessageDialog(null, "Not have page to previous !!!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                ArrayList test = (ArrayList) previous.get(previous.size() - 2);
+                if (test.get(1).equals(readOne)) {
+                    readOne = (ReadOne) test.get(1);
+                    this.mainbodypanel = test.get(0).toString();
+                } else if (test.get(1).equals(readMain)) {
+                    readMain = (ReadMain) test.get(1);
+                    this.mainbodypanel = test.get(0).toString();
+                } else if (test.get(1).equals(readCar)) {
+                    readCar = (ReadCartoon) test.get(1);
+                    this.mainbodypanel = test.get(0).toString();
+                } else if (test.get(1).equals(readFavourite)) {
+                    readFavourite = (ReadFavourite) test.get(1);
+                    this.mainbodypanel = test.get(0).toString();
                 }
-
-                mainLayout.getTopPanel().removeAll();
-                mainLayout.getTopPanel().add(topPanel);
-                mainLayout.getTopPanel().validate();
-                mainLayout.getTopPanel().repaint();
-
+                this.changeMainpage();
+                previous.remove(previous.size() - 1);
             }
-
+        } else {
+            for (int i = 0; i < navPanel.getJbf().length; i++) {
+                if (e.getSource().equals(navPanel.getJbf()[i])) {
+                    this.mainbodypanel = "readMain";
+                    this.changeMainpage();
+                    idcategoryzaza = navPanel.getFewza().get(i).getId();
+                    System.out.println(navPanel.getFewza().get(i).getId());
+                    readMain.getCartoonScrollPaneUser1().loopCardWithData(new CartoonModel().searchWithIdcategory(navPanel.getFewza().get(i).getId(), ""), Account.getId());
+                    CardMain[] card = readMain.getCartoonScrollPaneUser1().getCard();
+                    for (int j = 0; j < card.length; j++) {
+                        card[j].addMouseListener(this);
+                    }
+                    mainLayout.getTopPanel().removeAll();
+                    mainLayout.getTopPanel().add(topPanel);
+                    mainLayout.getTopPanel().validate();
+                    mainLayout.getTopPanel().repaint();
+                }
+            }
         }
 
     }
@@ -207,11 +251,24 @@ public class MainController implements ActionListener, MouseListener, KeyListene
 
         if (e.getSource().equals(navPanel.getPanelRound2())) {
             this.mainbodypanel = "readFavourite";
+
+            ArrayList<Object> arraylist1 = new ArrayList<Object>();
+            arraylist1.add("readFavourite");
+            arraylist1.add(readFavourite);
+            previous.add(arraylist1);
+
             this.changeMainpage();
+
         } else if (e.getSource().equals(navPanel.getPanelRound3())) {
             this.idcategoryzaza = 0;
 
             this.mainbodypanel = "readMain";
+
+            ArrayList<Object> arraylist1 = new ArrayList<Object>();
+            arraylist1.add("readMain");
+            arraylist1.add(readMain);
+            previous.add(arraylist1);
+
             this.changeMainpage();
 
         } else if (e.getSource().equals(navPanel.getPanelRound4())) {
@@ -242,7 +299,14 @@ public class MainController implements ActionListener, MouseListener, KeyListene
                 for (int i = 0; i < card.length; i++) {
                     if (e.getSource().equals(card[i])) {
                         readOne = new ReadOne(card[i].getId());
+
                         this.mainbodypanel = "readOne";
+
+                        ArrayList<Object> arraylist1 = new ArrayList<Object>();
+                        arraylist1.add("readOne");
+                        arraylist1.add(readOne);
+                        previous.add(arraylist1);
+
                         this.changeMainpage();
                         break;
                     }
@@ -275,7 +339,14 @@ public class MainController implements ActionListener, MouseListener, KeyListene
                 for (int i = 0; i < card.length; i++) {
                     if (e.getSource().equals(card[i])) {
                         readOne = new ReadOne(card[i].getId());
+
                         this.mainbodypanel = "readOne";
+
+                        ArrayList<Object> arraylist1 = new ArrayList<Object>();
+                        arraylist1.add("readOne");
+                        arraylist1.add(readOne);
+                        previous.add(arraylist1);
+
                         this.changeMainpage();
                         break;
                     }
@@ -290,7 +361,13 @@ public class MainController implements ActionListener, MouseListener, KeyListene
                 System.out.println(parseInt(test));
                 List<ChapterImgModel> few = new ChapterImgModel().all(parseInt(test));
                 readCar = new ReadCartoon(few);
+
                 this.mainbodypanel = "readCar";
+
+                ArrayList<Object> arraylist1 = new ArrayList<Object>();
+                arraylist1.add("readCar");
+                arraylist1.add(readCar);
+                previous.add(arraylist1);
                 this.changeMainpage();
             }
         }

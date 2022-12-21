@@ -11,12 +11,14 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicButtonUI;
+import model.UsersModel;
 
 /**
  *
  * @author niniewww
  */
 public class topPaneza extends javax.swing.JPanel {
+    private UsersModel infoUser;
 
     public JTextField getSearchBar() {
         return searchBar;
@@ -29,7 +31,8 @@ public class topPaneza extends javax.swing.JPanel {
     /**
      * Creates new form topPane
      */
-    public topPaneza() {
+    public topPaneza(UsersModel infoUser) {
+        this.infoUser = infoUser;
         initComponents();
         addPlaceholderStyle(searchBar);
         removePlaceholderStyle(searchBar);
@@ -110,7 +113,6 @@ public class topPaneza extends javax.swing.JPanel {
         rTopPane.setPreferredSize(new java.awt.Dimension(951, 147));
         rTopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        accountButton.setBackground(new java.awt.Color(255, 255, 255));
         accountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1144760 2.png"))); // NOI18N
         accountButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         accountButton.addActionListener(new java.awt.event.ActionListener() {
@@ -190,6 +192,7 @@ public class topPaneza extends javax.swing.JPanel {
 
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         // TODO add your handling code here:
+        new modalUser(infoUser);
     }//GEN-LAST:event_accountButtonActionPerformed
 
     private void searchBarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchBarFocusGained
