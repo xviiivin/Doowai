@@ -29,8 +29,8 @@ public class AuthController implements ActionListener, MouseListener {
         register.getjButton1().addActionListener(this);
         register.getjButton2().addActionListener(this);
 
-        login.getjTextField2().setText("few@gmail.com");
-        login.getjPasswordField1().setText("few@gmail.com");
+        login.getjTextField2().setText("");
+        login.getjPasswordField1().setText("");
     }
 
     @Override
